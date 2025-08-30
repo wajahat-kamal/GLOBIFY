@@ -13,7 +13,7 @@ export default function Navbar() {
           
           {/* Left: Logo + Brand */}
           <div
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center gap-2 cursor-pointer"
             onClick={() => navigate("/")}
           >
             <img
@@ -29,8 +29,8 @@ export default function Navbar() {
           {/* Right: Auth button */}
           <button
             onClick={() => navigate("/admin")}
-            className="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full text-sm font-medium
-                       bg-[#586FE5] text-white shadow-md hover:bg-[#181D45] hover:shadow-lg
+            className="inline-flex items-center justify-center gap-2 md:px-6 px-4 py-3 rounded-full text-sm font-medium
+                       bg-[#586FE5] text-white shadow-md hover:bg-[#3d3e79] hover:shadow-lg
                        transition-all duration-300 min-w-[140px]"
           >
             <span>Admin Login</span>
