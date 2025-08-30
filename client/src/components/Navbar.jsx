@@ -18,7 +18,7 @@ export default function Navbar() {
           >
             <img
               src={logo}
-              alt="Brand logo"
+              alt="logo"
               className="h-10 w-10 rounded-md object-cover shadow-sm"
             />
             <h1 className="text-[25px] md:text-2xl font-bold text-[#181D45] tracking-wide transition-colors duration-300">
