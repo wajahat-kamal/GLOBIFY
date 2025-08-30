@@ -3,8 +3,8 @@ import React from "react";
 
 function Header() {
   return (
-    <div className="mt-48 flex justify-center">
-      <div className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-[#E5E7FC] border border-primary text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-default">
+    <div className="mt-40 flex justify-center">
+      <div className="inline-flex items-center gap-2 px-6 py-1.5 rounded-full bg-[#E5E7FC] border border-primary/50 text-white shadow-md hover:shadow-lg transition-all duration-300 cursor-default">
         <p className="text-sm font-medium tracking-wide text-primary">
           New: AI feature integrated
         </p>
