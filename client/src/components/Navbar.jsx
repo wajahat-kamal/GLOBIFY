@@ -1,30 +1,46 @@
 import React from "react";
+import { LogIn } from "lucide-react";
 import logo from "../assets/globify-logo.png";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+export default function Navbar() {
+  const navigate = useNavigate();
+
   return (
-    <nav className="w-full bg-white shadow-md px-12 py-4 flex justify-between items-center">
-      {/* Logo + Title */}
-      <div className="flex items-center gap-3 text-gray-900">
-        <img
-          src={logo}
-          alt="Globify Logo"
-          className="h-10 w-10 rounded-full object-cover"
-        />
-        <h2 className="text-xl font-bold">GLOBIFYE</h2>
-      </div>
+    <header className="w-full bg-white/80 backdrop-blur-sm shadow-sm fixed top-0 z-50">
+      <div className="container mx-auto px-4 md:px-8">
+        <nav className="flex items-center justify-between h-16 md:h-20">
+          
+          {/* Left: Logo + Brand */}
+          <div
+            className="flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform duration-300"
+            onClick={() => navigate("/")}
+          >
+            <img
+              src={logo}
+              alt="Brand logo"
+              className="h-10 w-10 rounded-md object-cover shadow-sm"
+            />
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold text-[#586FE5] hover:text-[#4f63d5] tracking-wide">
+                GLOBIFY
+              </h1>
+            </div>
+          </div>
 
-      {/* Buttons */}
-      <div className="flex gap-4">
-        <button className="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
-          Sign Up
-        </button>
-        <button className="px-4 py-2 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 transition">
-          Logout
-        </button>
+          {/* Right: Auth button */}
+          <button
+            onClick={() => navigate("/admin")}
+            className="inline-flex items-center justify-center gap-2 px-6 py-2 rounded-full text-sm font-medium
+                       bg-[#586FE5] text-white shadow-md hover:bg-[#4f63d5] hover:shadow-lg
+                       transition-all duration-300 min-w-[120px]"
+          >
+            <span>Admin Login</span>
+            <LogIn className="h-4 w-4" />
+          </button>
+
+        </nav>
       </div>
-    </nav>
+    </header>
   );
-};
-
-export default Navbar;
+}
