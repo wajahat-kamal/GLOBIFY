@@ -3,8 +3,8 @@ import React from "react";
 
 function Header() {
   return (
-    <section className="flex items-center justify-center min-h-screen px-4 bg-white">
-      <div className="flex flex-col items-center text-center gap-4 max-w-3xl w-full">
+    <section className="flex items-center justify-center px-4 bg-white">
+      <div className="flex flex-col items-center justify-center text-center gap-2 max-w-3xl w-full">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-6 py-1 rounded-full bg-indigo-50 border border-primary/50 shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
           <p className="text-sm font-medium text-indigo-600">
