@@ -42,8 +42,6 @@ function Header() {
           </button>
         </form>
       </div>
-
-
     </section>
   );
 }
