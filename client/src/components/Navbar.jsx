@@ -7,7 +7,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full bg-white/80 backdrop-blur-md shadow-sm fixed top-0 z-50">
+    <header className="w-full backdrop-blur-md  fixed top-0 z-50">
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between h-16 md:h-20">
           

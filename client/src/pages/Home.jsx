@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Header from "../components/Header";
 import BlogList from "../components/BlogList";
-import BlogCard from "../components/BlogCard";
+import NewsLater from "../components/NewsLater";
 
 function Home() {
   return (
@@ -10,6 +10,7 @@ function Home() {
       <Navbar />
       <Header />
       <BlogList />
+      <NewsLater/>
     </>
   );
 }
