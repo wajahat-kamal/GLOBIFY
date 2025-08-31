@@ -4,7 +4,7 @@ function BlogList() {
   const blogCategory = ["All", "Technology", "Startup", "Lifestyle", "Finance"];
 
   return (
-    <section className="w-full px-4 md:px-10 py-12 bg-white">
+    <section className="w-full px-4 md:px-10 py-6 bg-white">
       {/* Category Buttons */}
       <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
         {blogCategory.map((item) => (
