@@ -1,11 +1,15 @@
 import { ArrowRight } from "lucide-react";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BlogCard({ blog }) {
   const { title, description, category, image, _id } = blog;
+  const navigate = useNavigate()
 
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-[400px]">
+    <div 
+    onClick={() => navigate(`/blog/${_id}`)}
+    className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-[400px]">
       {/* Image Section */}
       <div className="w-full h-48 overflow-hidden">
         <img
