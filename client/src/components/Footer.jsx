@@ -47,19 +47,19 @@ function Footer() {
       </div>
 
       {/* Divider Section */}
-      <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <div className="border-t border-gray-600 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         
         {/* Left Side */}
         <p>© {new Date().getFullYear()} GLOBIFY. All rights reserved.</p>
 
         {/* Creator Credit */}
-        <p className="mt-4 md:mt-0 text-gray-400">
+        <p className="mt-4 md:mt-0 text-gray-600">
           Made with <span className="text-red-500">❤</span> by{" "}
           <a
             href="https://wajahatkamal-dev.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-gray-200 hover:text-indigo-400 transition"
+            className="font-medium text-gray-400 hover:text-primary transition"
           >
             Wajahat Kamal
           </a>
@@ -67,16 +67,16 @@ function Footer() {
 
         {/* Social Icons */}
         <div className="flex space-x-5 mt-4 md:mt-0">
-          <a href="#" className="hover:text-indigo-400 transition-colors">
+          <a href="#" className="hover:text-primary transition-colors">
             <Facebook size={20} />
           </a>
-          <a href="#" className="hover:text-indigo-400 transition-colors">
+          <a href="#" className="hover:text-primary transition-colors">
             <Twitter size={20} />
           </a>
-          <a href="#" className="hover:text-indigo-400 transition-colors">
+          <a href="#" className="hover:text-primary transition-colors">
             <Instagram size={20} />
           </a>
-          <a href="#" className="hover:text-indigo-400 transition-colors">
+          <a href="#" className="hover:text-primary transition-colors">
             <Linkedin size={20} />
           </a>
         </div>
