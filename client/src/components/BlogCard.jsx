@@ -1,10 +1,11 @@
+import { ArrowRight } from "lucide-react";
 import React from "react";
 
 function BlogCard({ blog }) {
   const { title, description, category, image, _id } = blog;
 
   return (
-    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-[420px]">
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-[400px]">
       {/* Image Section */}
       <div className="w-full h-48 overflow-hidden">
         <img
@@ -22,7 +23,7 @@ function BlogCard({ blog }) {
         </span>
 
         {/* Title */}
-        <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+        <h4 className="text-lg font-semibold text-gray-900 mb-1 line-clamp-2">
           {title}
         </h4>
 
@@ -33,10 +34,11 @@ function BlogCard({ blog }) {
 
         {/* Read More */}
         <div className="mt-4">
-          <button className="text-sm font-medium text-primary hover:text-indigo-800 transition">
-            Read More →
-          </button>
-        </div>
+  <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-indigo-800 transition-colors duration-300">
+    Read More
+    <ArrowRight className="w-4 h-4" />
+  </button>
+</div>
       </div>
     </div>
   );
