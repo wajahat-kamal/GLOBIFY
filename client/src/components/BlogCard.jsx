@@ -1,0 +1,45 @@
+import React from "react";
+
+function BlogCard({ blog }) {
+  const { title, description, category, image, _id } = blog;
+
+  return (
+    <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-[420px]">
+      {/* Image Section */}
+      <div className="w-full h-48 overflow-hidden">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+        />
+      </div>
+
+      {/* Content Section */}
+      <div className="flex flex-col flex-1 p-4">
+        {/* Category */}
+        <span className="text-xs font-medium text-primary bg-indigo-100 px-3 py-1 rounded-full w-fit mb-3">
+          {category}
+        </span>
+
+        {/* Title */}
+        <h4 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+          {title}
+        </h4>
+
+        {/* Description */}
+        <p className="text-sm text-gray-600 flex-1 line-clamp-3">
+          {description}
+        </p>
+
+        {/* Read More */}
+        <div className="mt-4">
+          <button className="text-sm font-medium text-primary hover:text-indigo-800 transition">
+            Read More →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default BlogCard;
