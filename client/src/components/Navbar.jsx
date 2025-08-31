@@ -30,7 +30,7 @@ export default function Navbar() {
           <button
             onClick={() => navigate("/admin")}
             className="inline-flex items-center justify-center gap-2 md:px-6 px-4 py-3 rounded-full text-sm font-medium
-                       bg-primary text-white shadow-md hover:bg-primary/90  hover:scale-1021hover:shadow-lg
+                       bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
                        transition-all duration-300 min-w-[140px]"
           >
             <span>Admin Login</span>
