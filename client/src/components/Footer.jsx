@@ -3,8 +3,8 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-white shadow-xl py-8 px-6 lg:px-20">
-      <div className="flex justify-between flex-col md:flex-row gap-10 md:gap-20">
+    <footer className="bg-white shadow-xl py-8 px-6 lg:px-30">
+      <div className="flex justify-between flex-col md:flex-row gap-10">
         {/* Logo & About */}
         <div>
           <h2 className="text-3xl font-extrabold text-primary tracking-wide">
@@ -18,27 +18,27 @@ function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold text-primary mb-4">
+          <h3 className="text-lg font-semibold text-primary mb-2">
             Quick Links
           </h3>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-2 text-sm text-right">
             <li>
-              <a href="/" className="hover:text-primary transition-colors">
+              <a href="/" className="hover:text-primary hover:underline transition-colors">
                 Home
               </a>
             </li>
             <li>
-              <a href="/blogs" className="hover:text-primary transition-colors">
+              <a href="/blogs" className="hover:text-primary hover:underline transition-colors">
                 Blogs
               </a>
             </li>
             <li>
-              <a href="/about" className="hover:text-primary transition-colors">
+              <a href="/about" className="hover:text-primary hover:underline transition-colors">
                 About
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-primary transition-colors">
+              <a href="/contact" className="hover:text-primary hover:underline transition-colors">
                 Contact
               </a>
             </li>
