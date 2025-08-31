@@ -3,8 +3,8 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-white shadow-xl py-12 px-6 md:px-12 lg:px-20">
-      <div className="flex justify-between flex-col md:flex-row items-center">
+    <footer className="bg-white shadow-xl py-8 px-6 lg:px-20">
+      <div className="flex justify-between flex-col md:flex-row gap-10 md:gap-20">
         {/* Logo & About */}
         <div>
           <h2 className="text-3xl font-extrabold text-primary tracking-wide">
@@ -17,7 +17,7 @@ function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div className="text-gray-600">
+        <div>
           <h3 className="text-lg font-semibold text-primary mb-4">
             Quick Links
           </h3>
@@ -28,17 +28,17 @@ function Footer() {
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-primary transition-colors">
+              <a href="/blogs" className="hover:text-primary transition-colors">
                 Blogs
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-primary transition-colors">
+              <a href="/about" className="hover:text-primary transition-colors">
                 About
               </a>
             </li>
             <li>
-              <a href="/" className="hover:text-primary transition-colors">
+              <a href="/contact" className="hover:text-primary transition-colors">
                 Contact
               </a>
             </li>
@@ -47,7 +47,7 @@ function Footer() {
       </div>
 
       {/* Divider Section */}
-      <div className="border-t border-gray-600 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <div className="border-t border-gray-300 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
         
         {/* Left Side */}
         <p>© {new Date().getFullYear()} GLOBIFY. All rights reserved.</p>
