@@ -40,10 +40,12 @@ export default function Blog() {
           </span>
           <span>•</span>
           <span className="text-center px-4 py-1.5 bg-sky-100 text-sky-600 md:text-sm text-[11px] font-medium rounded-full shadow-sm">
-  Published on {Moment(data.createdAt).format("MMMM Do, YYYY")}
-</span>
-<span>•</span>
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-center md:text-sm text-[11px]">By {data.author}</span>
+            Published on {Moment(data.createdAt).format("MMMM Do, YYYY")}
+          </span>
+          <span>•</span>
+          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-center md:text-sm text-[11px]">
+            By {data.author}
+          </span>
         </div>
 
         {/* Title */}
