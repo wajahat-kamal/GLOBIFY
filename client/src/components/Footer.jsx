@@ -23,22 +23,34 @@ function Footer() {
           </h3>
           <ul className="space-y-2 text-sm text-right">
             <li>
-              <a href="/" className="hover:text-primary hover:underline transition-colors">
+              <a
+                href="/"
+                className="hover:text-primary hover:underline transition-colors"
+              >
                 Home
               </a>
             </li>
             <li>
-              <a href="/blogs" className="hover:text-primary hover:underline transition-colors">
+              <a
+                href="/blogs"
+                className="hover:text-primary hover:underline transition-colors"
+              >
                 Blogs
               </a>
             </li>
             <li>
-              <a href="/about" className="hover:text-primary hover:underline transition-colors">
+              <a
+                href="/about"
+                className="hover:text-primary hover:underline transition-colors"
+              >
                 About
               </a>
             </li>
             <li>
-              <a href="/contact" className="hover:text-primary hover:underline transition-colors">
+              <a
+                href="/contact"
+                className="hover:text-primary hover:underline transition-colors"
+              >
                 Contact
               </a>
             </li>
@@ -48,7 +60,6 @@ function Footer() {
 
       {/* Divider Section */}
       <div className="border-t border-gray-300 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        
         {/* Left Side */}
         <p>© {new Date().getFullYear()} GLOBIFY. All rights reserved.</p>
 
