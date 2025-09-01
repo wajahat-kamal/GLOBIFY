@@ -9,7 +9,8 @@ function NewsLater() {
           Never Miss a Blog!
         </h1>
         <p className="text-gray-600 text-sm md:text-base mb-6">
-          Subscribe to get the latest blogs, new tech updates, and exclusive news delivered straight to your inbox.
+          Subscribe to get the latest blogs, new tech updates, and exclusive
+          news delivered straight to your inbox.
         </p>
 
         {/* Form */}

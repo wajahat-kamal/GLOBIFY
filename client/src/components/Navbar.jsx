@@ -10,7 +10,6 @@ export default function Navbar() {
     <header className="w-full backdrop-blur-md  fixed top-0 z-50">
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          
           {/* Left: Logo + Brand */}
           <div
             className="flex items-center gap-2 cursor-pointer"
@@ -36,7 +35,6 @@ export default function Navbar() {
             <span>Admin Login</span>
             <LogIn className="h-4 w-4" />
           </button>
-
         </nav>
       </div>
     </header>
