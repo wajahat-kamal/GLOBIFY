@@ -21,7 +21,9 @@ export default function Blog() {
   return data ? (
     <div>
       <Navbar />
-      
+      <div>
+        
+      </div>
     </div>
   ) : <div>Loading..</div>
 }
