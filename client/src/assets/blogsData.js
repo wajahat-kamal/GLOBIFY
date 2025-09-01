@@ -44,3 +44,51 @@ export const blogsData = [
     author: "Michael Lee",
   },
 ];
+
+export const commentsData = [
+  {
+    id: "c1",
+    blog: "1",
+    name: "Sarah Johnson",
+    content: "Great insights! AI is definitely going to change the future.",
+    isApproved: true,
+    createdAt: "2025-08-01T12:45:00Z",
+    updatedAt: "2025-08-01T12:45:00Z",
+  },
+  {
+    id: "c2",
+    blog: "1",
+    name: "Michael Lee",
+    content: "Interesting article, but I think we also need to focus on AI ethics.",
+    isApproved: true,
+    createdAt: "2025-08-02T09:30:00Z",
+    updatedAt: "2025-08-02T09:40:00Z",
+  },
+  {
+    id: "c3",
+    blog: "2",
+    name: "Emma Davis",
+    content: "Thanks for sharing, learning from failures is the best teacher.",
+    isApproved: true,
+    createdAt: "2025-08-06T15:20:00Z",
+    updatedAt: "2025-08-06T15:20:00Z",
+  },
+  {
+    id: "c4",
+    blog: "3",
+    name: "John Smith",
+    content: "I tried the morning routine tips, and they really helped!",
+    isApproved: false,
+    createdAt: "2025-08-12T10:05:00Z",
+    updatedAt: "2025-08-12T10:15:00Z",
+  },
+  {
+    id: "c5",
+    blog: "4",
+    name: "Sophia Brown",
+    content: "Excited to see which JavaScript frameworks will dominate in 2025!",
+    isApproved: true,
+    createdAt: "2025-08-21T11:25:00Z",
+    updatedAt: "2025-08-21T11:25:00Z",
+  },
+];
