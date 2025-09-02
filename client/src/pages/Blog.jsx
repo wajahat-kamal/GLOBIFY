@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { blogsData } from "../assets/blogsData";
+import { blogsData, commentsData } from "../assets/blogsData";
 import Navbar from "../components/Navbar";
 import Moment from "moment";
 
 export default function Blog() {
   const { id } = useParams();
+
   const [data, setData] = useState(null);
+  const [comments, setComments] = useState([]);
 
   const fetchBlogData = () => {
     const blog = blogsData.find((item) => item._id === id);
     setData(blog);
   };
 
+  const fetchComments = () => {
+    setComments(commentsData);
+  };
+
   useEffect(() => {
     fetchBlogData();
+    fetchComments();
   }, [id]);
 
   return data ? (
@@ -58,8 +65,19 @@ export default function Blog() {
           {data.description}
         </p>
 
-        <div>
-          <h1>Comments ()</h1>
+        <div className="mt-10">
+          <h1>Comments ({comments.length})</h1>
+          <div className="mt-5">
+          {comments.map((comment, index) => (
+            <div key={index}>
+              <div className="flex items-center gap-2">
+              <h1>{comment.name}</h1>
+              <p>{Moment(comment.createdAt).format("MMMM Do, YYYY")}</p>
+              </div>
+              <p>{comment.content}</p>
+            </div>
+          ))}
+          </div>
         </div>
 
       </article>
