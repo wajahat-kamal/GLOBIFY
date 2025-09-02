@@ -43,15 +43,15 @@ export default function Blog() {
 
         {/* Meta Info */}
         <div className="mb-6 text-sm text-gray-500 flex items-center gap-3">
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full md:text-sm text-[11px] font-medium">
+          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full md:text-sm text-[11px] font-medium shadow-md">
             {data.category}
           </span>
           <span>•</span>
-          <span className="text-center px-4 py-1.5 bg-sky-100 text-sky-600 md:text-sm text-[11px] font-medium rounded-full shadow-sm">
+          <span className="text-center px-4 py-1.5 bg-sky-100 text-sky-600 md:text-sm text-[11px] font-medium rounded-full shadow-md">
             Published on {Moment(data.createdAt).format("MMMM Do, YYYY")}
           </span>
           <span>•</span>
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-center md:text-sm text-[11px]">
+          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-center md:text-sm text-[11px] shadow-md">
             By {data.author}
           </span>
         </div>

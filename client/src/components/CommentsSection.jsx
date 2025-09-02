@@ -34,7 +34,7 @@ export default function CommentsSection({ comments }) {
                 </div>
 
                 {/* Date */}
-                <span className="text-sm px-3 py-1 bg-sky-100 text-sky-600 rounded-full">
+                <span className="text-sm px-3 py-1 bg-sky-100 text-sky-600 rounded-full ">
                   {Moment(comment.createdAt).format("MMMM Do, YYYY")}
                 </span>
               </div>
@@ -64,14 +64,14 @@ export default function CommentsSection({ comments }) {
           <input
             type="text"
             placeholder="Enter your name"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none text-gray-700 placeholder-gray-400 transition"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition"
           />
 
           {/* Comment Field */}
           <textarea
             placeholder="Add your comment"
             rows="4"
-            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none text-gray-700 placeholder-gray-400 transition resize-none"
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition resize-none"
           />
 
           {/* Submit Button */}
