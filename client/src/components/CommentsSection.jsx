@@ -4,6 +4,7 @@ import Avatar from "../assets/user-avatar.png"; // ✅ fixed import (no destruct
 
 export default function CommentsSection({ comments }) {
   return (
+    <>
     <div className="mt-12 max-w-4xl mx-auto">
       {/* Header */}
       <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
@@ -51,5 +52,17 @@ export default function CommentsSection({ comments }) {
         )}
       </div>
     </div>
+
+     {/* add comment */}
+    <div>
+     <h2>Add Your Comment</h2>
+     <form>
+      <input type="text" placeholder="Enter your name" />
+      <textarea placeholder="Add your comment" />
+      <button type="submit">Add Comment</button>
+     </form>
+    </div>
+    </>
+
   );
 }
