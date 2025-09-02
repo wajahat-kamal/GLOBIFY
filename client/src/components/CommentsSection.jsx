@@ -4,7 +4,7 @@ import Avatar from "../assets/user-avatar.png"; // ✅ fixed import (no destruct
 
 export default function CommentsSection({ comments }) {
   return (
-    <div className="mt-12 max-w-3xl mx-auto">
+    <div className="mt-12 max-w-4xl mx-auto">
       {/* Header */}
       <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
         Comments <span className="text-gray-500 text-lg">({comments.length})</span>
@@ -32,7 +32,7 @@ export default function CommentsSection({ comments }) {
               </div>
 
               {/* Date */}
-              <span className="text-sm text-gray-500">
+              <span className="text-sm px-3 py-1 bg-sky-100 text-sky-600 rounded-full">
                 {Moment(comment.createdAt).format("MMMM Do, YYYY")}
               </span>
             </div>
