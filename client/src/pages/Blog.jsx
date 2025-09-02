@@ -73,7 +73,6 @@ export default function Blog() {
 
         {/* Comment Section */}
         <div>
-
           {/* Comments List */}
           <div className="mt-12 max-w-2xl">
             <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
@@ -87,9 +86,7 @@ export default function Blog() {
                   key={index}
                   className="p-5 rounded-xl bg-secondary shadow-sm border border-gray-100 hover:shadow-md transition"
                 >
-                  {/* Author & Date */}
                   <div className="flex items-center justify-between mb-3">
-                    {/* Avatar + Name */}
                     <div className="flex items-center gap-3">
                       <img
                         src={Avatar}
@@ -101,13 +98,11 @@ export default function Blog() {
                       </h3>
                     </div>
 
-                    {/* Date */}
                     <span className="text-sm px-3 py-1 bg-sky-100 text-sky-600 rounded-full ">
                       {Moment(comment.createdAt).format("MMMM Do, YYYY")}
                     </span>
                   </div>
 
-                  {/* Comment Content */}
                   <p className="text-gray-700 leading-relaxed">
                     {comment.content}
                   </p>
@@ -130,7 +125,6 @@ export default function Blog() {
             </h2>
 
             <form className="space-y-5">
-              {/* Name Field */}
               <input
                 type="text"
                 onChange={(e) => setName(e.target.value)}
@@ -138,8 +132,6 @@ export default function Blog() {
                 placeholder="Enter your name"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition"
               />
-
-              {/* Comment Field */}
               <textarea
                 onChange={(e) => setContent(e.target.value)}
                 value={content}
@@ -147,8 +139,6 @@ export default function Blog() {
                 rows="4"
                 className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition resize-none"
               />
-
-              {/* Submit Button */}
               <button
                 type="submit"
                 className="w-full  px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition shadow-sm"
@@ -158,10 +148,9 @@ export default function Blog() {
             </form>
           </div>
         </div>
-
       </article>
 
-      <Footer/>
+      <Footer />
     </div>
   ) : (
     <div className="flex items-center justify-center min-h-screen">
