@@ -3,7 +3,7 @@ import React from "react";
 function NewsLater() {
   return (
     <section className="w-full py-12 px-6 md:px-12 lg:px-20">
-      <div className="max-w-4xl mx-auto text-center bg-white rounded-2xl p-8 md:p-12">
+      <div className="max-w-4xl mx-auto text-center bg-secondary rounded-2xl p-8 md:p-12">
         {/* Heading */}
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
           Never Miss a Blog!

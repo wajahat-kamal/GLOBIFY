@@ -9,7 +9,7 @@ function BlogCard({ blog }) {
   return (
     <div
       onClick={() => navigate(`/blog/${_id}`)}
-      className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col cursor-pointer group"
+      className="bg-secondary rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col cursor-pointer group"
     >
       {/* Image Section */}
       <div className="relative w-full h-44 overflow-hidden">

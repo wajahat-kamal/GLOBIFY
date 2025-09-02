@@ -26,7 +26,7 @@ export default function Blog() {
   }, [id]);
 
   return data ? (
-    <div className="min-h-screen bg-gray-50 text-gray-900">
+    <div className="min-h-screen text-gray-900">
       {/* Navbar */}
       <Navbar />
 
@@ -43,7 +43,7 @@ export default function Blog() {
 
         {/* Meta Info */}
         <div className="mb-6 text-sm text-gray-500 flex items-center gap-3">
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-xs font-medium">
+          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full md:text-sm text-[11px] font-medium">
             {data.category}
           </span>
           <span>•</span>
