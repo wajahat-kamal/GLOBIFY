@@ -59,7 +59,8 @@ export const commentsData = [
     id: "c2",
     blog: "1",
     name: "Michael Lee",
-    content: "Interesting article, but I think we also need to focus on AI ethics.",
+    content:
+      "Interesting article, but I think we also need to focus on AI ethics.",
     isApproved: true,
     createdAt: "2025-08-02T09:30:00Z",
     updatedAt: "2025-08-02T09:40:00Z",
@@ -86,7 +87,8 @@ export const commentsData = [
     id: "c5",
     blog: "4",
     name: "Sophia Brown",
-    content: "Excited to see which JavaScript frameworks will dominate in 2025!",
+    content:
+      "Excited to see which JavaScript frameworks will dominate in 2025!",
     isApproved: true,
     createdAt: "2025-08-21T11:25:00Z",
     updatedAt: "2025-08-21T11:25:00Z",

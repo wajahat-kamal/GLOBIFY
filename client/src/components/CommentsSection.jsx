@@ -7,7 +7,8 @@ export default function CommentsSection({ comments }) {
     <div className="mt-12 max-w-4xl mx-auto">
       {/* Header */}
       <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
-        Comments <span className="text-gray-500 text-lg">({comments.length})</span>
+        Comments{" "}
+        <span className="text-gray-500 text-lg">({comments.length})</span>
       </h2>
 
       {/* Comments List */}
@@ -38,9 +39,7 @@ export default function CommentsSection({ comments }) {
             </div>
 
             {/* Comment Content */}
-            <p className="text-gray-700 leading-relaxed">
-              {comment.content}
-            </p>
+            <p className="text-gray-700 leading-relaxed">{comment.content}</p>
           </div>
         ))}
 
