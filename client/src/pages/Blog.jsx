@@ -57,6 +57,11 @@ export default function Blog() {
         <p className="text-lg leading-relaxed text-gray-700">
           {data.description}
         </p>
+
+        <div>
+          <h1>Comments ()</h1>
+        </div>
+
       </article>
     </div>
   ) : (
