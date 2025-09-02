@@ -4,8 +4,8 @@ import { blogsData, commentsData } from "../assets/blogsData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Moment from "moment";
-import Avatar from "../assets/user-avatar.png"; // ✅ fixed import (no destructure)
-import CommentsSection from "../components/CommentsSection";
+import Avatar from "../assets/user-avatar.png"; 
+import Loader from "../components/Loader";
 
 export default function Blog() {
   const { id } = useParams();
@@ -152,9 +152,5 @@ export default function Blog() {
 
       <Footer />
     </div>
-  ) : (
-    <div className="flex items-center justify-center min-h-screen">
-      <p className="text-gray-500 text-lg animate-pulse">Loading...</p>
-    </div>
-  );
+  ) : <Loader />
 }
