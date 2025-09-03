@@ -7,8 +7,7 @@ function Layout() {
 
   return (
     <>
-      <div className="container mx-auto px-4 md:px-8">
-        <nav className="flex items-center justify-between h-16 md:h-20">
+        <nav className="flex items-center justify-between h-16 md:h-20 mx-auto px-4 md:px-8 container">
           <div
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => navigate("/")}
@@ -32,7 +31,6 @@ function Layout() {
             <span>Logout</span>
           </button>
         </nav>
-      </div>
     </>
   );
 }
