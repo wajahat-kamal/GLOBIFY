@@ -18,9 +18,9 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} />
-          <Route path="blog-list" element={<BlogList />} />
+          <Route path="add-blogs" element={<AddBlog />} />
+          <Route path="blog-lists" element={<BlogList />} />
           <Route path="comments" element={<Comments />} />
-          <Route path="add-blog" element={<AddBlog />} />
         </Route>
       </Routes>
     </div>

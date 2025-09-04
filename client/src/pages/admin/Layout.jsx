@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/globify-logo.png";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import {
   LayoutDashboard,
   FilePlus2,
@@ -12,10 +12,10 @@ function Layout() {
   const navigate = useNavigate();
 
   const menuItems = [
-    { name: "Dashboard", path: "/", icon: LayoutDashboard },
-    { name: "Add Blogs", path: "/add-blogs", icon: FilePlus2 },
-    { name: "Blog Lists", path: "/blog-lists", icon: ListOrdered },
-    { name: "Comments", path: "/comments", icon: MessageSquare },
+    { name: "Dashboard", path: "/admin", icon: LayoutDashboard },
+    { name: "Add Blogs", path: "/admin/add-blogs", icon: FilePlus2 },
+    { name: "Blog Lists", path: "/admin/blog-lists", icon: ListOrdered },
+    { name: "Comments", path: "/admin/comments", icon: MessageSquare },
   ];
 
   return (
@@ -72,14 +72,7 @@ function Layout() {
 
         {/* Main Page Content */}
         <main className="flex-1 p-6 overflow-y-auto bg-secondary">
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-xl font-bold text-gray-800 mb-4">
-              Welcome Back 👋
-            </h2>
-            <p className="text-gray-600">
-              This is your clean dashboard layout. Add your page content here.
-            </p>
-          </div>
+         <Outlet/>
         </main>
       </div>
     </div>
