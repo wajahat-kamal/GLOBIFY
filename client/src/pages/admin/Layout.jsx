@@ -21,7 +21,7 @@ function Layout() {
   return (
     <div className="h-screen flex flex-col bg-white">
       {/* Top Navbar */}
-      <nav className="bg-white flex items-center justify-between h-16 md:h-20 container mx-auto px-4 md:px-8">
+      <nav className="bg-white flex items-center justify-between h-16 md:h-20 container mx-auto px-4">
         {/* Left: Logo + Brand */}
         <div
           className="flex items-center gap-2 cursor-pointer"
@@ -71,7 +71,7 @@ function Layout() {
         </aside>
 
         {/* Main Page Content */}
-        <main className="flex-1 p-6 overflow-y-auto ">
+        <main className="flex-1 p-6 overflow-y-auto bg-secondary">
           <div className="bg-white rounded-xl shadow-sm p-6">
             <h2 className="text-xl font-bold text-gray-800 mb-4">
               Welcome Back 👋
