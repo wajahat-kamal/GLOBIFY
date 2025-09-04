@@ -42,15 +42,27 @@ function Layout() {
           <nav className="flex-1 p-4 space-y-2">
             <button
               onClick={() => navigate("/")}
-              className="w-full text-left px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
+              className="w-full text-center px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
             >
               Dashboard
             </button>
             <button
-              onClick={() => navigate("/admin")}
-              className="w-full text-left px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
+              onClick={() => navigate("/add-blogs")}
+              className="w-full text-center px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
             >
-              Admin Panel
+              Add blogs
+            </button>
+             <button
+              onClick={() => navigate("/blog-lists")}
+              className="w-full text-center px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
+            >
+              Blog lists
+            </button>
+            <button
+              onClick={() => navigate("/comments")}
+              className="w-full text-center px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition"
+            >
+              Comments
             </button>
           </nav>
         </aside>
