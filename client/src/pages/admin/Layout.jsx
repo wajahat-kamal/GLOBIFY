@@ -1,22 +1,12 @@
 import React from "react";
 import logo from "../../assets/globify-logo.png";
 import { Outlet, useNavigate } from "react-router-dom";
-import {
-  LayoutDashboard,
-  FilePlus2,
-  ListOrdered,
-  MessageSquare,
-} from "lucide-react";
+import Sidebar from "../../components/adimin/Sidebar";
 
 function Layout() {
   const navigate = useNavigate();
 
-  const menuItems = [
-    { name: "Dashboard", path: "/admin", icon: LayoutDashboard },
-    { name: "Add Blogs", path: "/admin/add-blogs", icon: FilePlus2 },
-    { name: "Blog Lists", path: "/admin/blog-lists", icon: ListOrdered },
-    { name: "Comments", path: "/admin/comments", icon: MessageSquare },
-  ];
+ 
 
   return (
     <div className="h-screen flex flex-col bg-white">
@@ -49,31 +39,12 @@ function Layout() {
       </nav>
 
       {/* Content Layout */}
-      <div className="flex flex-1">
+      <div className="flex h-[calc(100vh-70px)] bg-secondary">
         {/* Sidebar */}
-        <aside className="w-64 bg-white border-r border-gray-200 shadow-sm hidden md:flex flex-col">
-          <nav className="flex-1 p-4 space-y-1 text-gray-700">
-            {menuItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <button
-                  key={index}
-                  onClick={() => navigate(item.path)}
-                  className="flex items-center gap-3 w-full px-4 py-4 rounded-lg font-medium 
-                       hover:bg-secondary hover:text-primary transition-all"
-                >
-                  <Icon className="h-5 w-5" />
-                  <span>{item.name}</span>
-                </button>
-              );
-            })}
-          </nav>
-        </aside>
+        <Sidebar/>
 
         {/* Main Page Content */}
-        <main className="flex-1 p-6 overflow-y-auto bg-secondary">
          <Outlet/>
-        </main>
       </div>
     </div>
   );
