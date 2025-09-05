@@ -6,35 +6,84 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
   const BlogDate = new Date(createdAt);
 
   return (
-    <tr className="border-b hover:bg-gray-50 transition">
+    <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
       {/* Index */}
-      <th className="px-4 py-3 text-gray-600 text-sm font-medium">{index}</th>
+      <th className="px-4 py-3 text-gray-600 text-sm font-semibold w-12 align-top">
+        {index}
+      </th>
 
-      {/* Title */}
-      <td className="px-4 py-3 text-gray-800 font-medium">{title}</td>
+      {/* Main Content */}
+      <td className="px-4 py-3 text-gray-800 font-medium w-full">
+        {/* Title */}
+        <div className="truncate max-w-[300px] sm:max-w-[450px]">{title}</div>
 
-      {/* Date */}
-      <td className="px-4 py-3 text-gray-600 text-sm max-sm:hidden">
-        {BlogDate.toDateString()}
+        {/* Mobile: Date + Status + Actions */}
+        <div className="flex flex-wrap items-center gap-3 mt-2 sm:hidden">
+          {/* Date */}
+          <span className="text-gray-500 text-xs">
+            {BlogDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+            })}
+          </span>
+
+          {/* Status */}
+          <span
+            className={`px-2 py-1 text-xs font-medium rounded-full border ${
+              isPublished
+                ? "bg-green-50 text-green-600 border-green-200"
+                : "bg-yellow-50 text-yellow-600 border-yellow-200"
+            }`}
+          >
+            {isPublished ? "Published" : "Unpublished"}
+          </span>
+
+          {/* Actions */}
+          <div className="flex items-center gap-2">
+            <button
+              className={`px-2 py-1 text-xs font-semibold rounded-lg border transition-colors duration-200 ${
+                isPublished
+                  ? "bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100"
+                  : "bg-green-50 text-green-600 border-green-200 hover:bg-green-100"
+              }`}
+            >
+              {isPublished ? "Unpublish" : "Publish"}
+            </button>
+
+            <button className="p-1.5 rounded-full border border-red-200 text-red-500 hover:bg-red-50 transition-colors">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
       </td>
 
-      {/* Status */}
+      {/* Desktop: Date */}
+      <td className="px-4 py-3 text-gray-500 text-sm whitespace-nowrap max-sm:hidden">
+        {BlogDate.toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })}
+      </td>
+
+      {/* Desktop: Status */}
       <td className="px-4 py-3 max-sm:hidden">
         <span
-          className={`px-3 py-1 text-xs font-semibold rounded-full ${
+          className={`px-3 py-1.5 text-xs font-medium rounded-full border ${
             isPublished
-              ? "bg-green-100 text-green-600"
-              : "bg-yellow-100 text-yellow-600"
+              ? "bg-green-50 text-green-600 border-green-200"
+              : "bg-yellow-50 text-yellow-600 border-yellow-200"
           }`}
         >
           {isPublished ? "Published" : "Unpublished"}
         </span>
       </td>
 
-      {/* Actions */}
-      <td className="px-4 py-3 flex items-center gap-3">
+      {/* Desktop: Actions */}
+      <td className="px-4 py-3 flex items-center gap-2 max-sm:hidden">
         <button
-          className={`px-3 py-1 text-xs font-medium rounded-md border transition ${
+          className={`px-3 py-1.5 text-xs font-semibold rounded-lg border transition-colors duration-200 ${
             isPublished
               ? "bg-yellow-50 text-yellow-600 border-yellow-200 hover:bg-yellow-100"
               : "bg-green-50 text-green-600 border-green-200 hover:bg-green-100"
@@ -43,7 +92,7 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
           {isPublished ? "Unpublish" : "Publish"}
         </button>
 
-        <button className="p-2 rounded-full hover:bg-red-100 text-red-500 transition">
+        <button className="p-2 rounded-full border border-red-200 text-red-500 hover:bg-red-50 transition-colors">
           <X className="w-4 h-4" />
         </button>
       </td>

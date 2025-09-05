@@ -20,7 +20,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="p-4 w-full">
+    <div className="px-4 py-0 w-full">
       {/* Stats Cards */}
       <div className="flex flex-col md:flex-row flex-wrap items-start justify-start gap-6">
         {/* Blogs Card */}
@@ -64,36 +64,38 @@ function Dashboard() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-md p-6 mt-6">
-        <h1 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+        {/* Heading */}
+        <h1 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
           <FileText className="h-5 w-5 text-primary" />
           Latest Blogs
         </h1>
-        {/* Desktop / Tablet Table */}
-        <div className="hidden sm:block overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[600px]">
-            <thead>
-              <tr className="bg-gray-100 text-gray-700">
+
+        {/* Table */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[700px]">
+            {/* Table Head */}
+            <thead className="hidden md:table-header-group">
+              <tr className="bg-gray-50 border-b border-gray-200 text-gray-700">
                 <th className="py-3 px-4 text-sm font-semibold">#</th>
-                <th className="py-3 px-4 text-sm font-semibold">BLOG TITLE</th>
-                <th className="py-3 px-4 text-sm font-semibold">DATE</th>
-                <th className="py-3 px-4 text-sm font-semibold">STATUS</th>
+                <th className="py-3 px-4 text-sm font-semibold">Blog Title</th>
+                <th className="py-3 px-4 text-sm font-semibold">Date</th>
+                <th className="py-3 px-4 text-sm font-semibold">Status</th>
                 <th className="py-3 px-4 text-sm font-semibold text-center">
-                  ACTION
+                  Action
                 </th>
               </tr>
             </thead>
 
+            {/* Table Body */}
             <tbody>
-              {dashboardData.recentBlogs.map((blog, index) => {
-                return (
-                  <BlogTableItem
-                    key={blog._id}
-                    fetchBlogs={fetchDashboardData}
-                    index={index + 1}
-                    blog={blog}
-                  />
-                );
-              })}
+              {dashboardData.recentBlogs.map((blog, index) => (
+                <BlogTableItem
+                  key={blog.id}
+                  fetchBlogs={fetchDashboardData}
+                  index={index + 1}
+                  blog={blog}
+                />
+              ))}
             </tbody>
           </table>
         </div>

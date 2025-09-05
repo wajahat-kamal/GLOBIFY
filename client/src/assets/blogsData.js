@@ -202,7 +202,7 @@ export const dashboardDataBlogs = {
       date: "Thu Jun 12 2025",
       createdAt: "2025-06-12T14:15:00Z",
       status: "Draft",
-      isPublished: false,
+      isPublished: true,
     },
     {
       id: 3,
@@ -226,7 +226,7 @@ export const dashboardDataBlogs = {
       date: "Tue Jul 15 2025",
       createdAt: "2025-07-15T16:05:00Z",
       status: "Draft",
-      isPublished: false,
+      isPublished: true,
     },
   ],
 };
