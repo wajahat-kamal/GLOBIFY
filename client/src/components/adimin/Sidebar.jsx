@@ -23,7 +23,6 @@ function Sidebar() {
         return (
           <NavLink
             key={index}
-            end={true}
             to={item.path}
             className={({ isActive }) =>
               `flex items-center gap-3 w-full px-4 py-3 rounded-xl font-medium transition-all duration-200
