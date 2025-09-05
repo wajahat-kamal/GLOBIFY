@@ -6,16 +6,16 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
   const BlogDate = new Date(createdAt);
 
   return (
-    <tr className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+    <tr className="border-b border-gray-400 hover:bg-gray-50 transition-colors">
       {/* Index */}
-      <th className="px-4 py-3 text-gray-600 text-sm font-semibold w-12 align-top">
+      <th className="px-0 py-3 text-gray-600 text-sm font-semibold w-12 align-top">
         {index}
       </th>
 
       {/* Main Content */}
-      <td className="px-4 py-3 text-gray-800 font-medium w-full">
+      <td className="px-2 py-3 text-gray-800 font-medium">
         {/* Title */}
-        <div className="truncate max-w-[300px] sm:max-w-[450px]">{title}</div>
+        <div className="truncate max-w-[280px] sm:max-w-[450px]">{title}</div>
 
         {/* Mobile: Date + Status + Actions */}
         <div className="flex flex-wrap items-center gap-3 mt-2 sm:hidden">
@@ -96,6 +96,7 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
           <X className="w-4 h-4" />
         </button>
       </td>
+
     </tr>
   );
 }
