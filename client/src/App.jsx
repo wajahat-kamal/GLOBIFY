@@ -6,6 +6,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import BlogList from "./pages/admin/BlogList";
 import Comments from "./pages/admin/Comments";
 import AddBlog from "./pages/admin/AddBlog";
+import Login from "./components/adimin/Login";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route path="/blog/:id" element={<Blog />} />
 
         {/* Admin Routes */}
-        <Route path="/admin" element={<Layout />}>
+        <Route path="/admin" element={false ? <Layout /> : <Login/>}>
           <Route index element={<Dashboard />} />
           <Route path="add-blogs" element={<AddBlog />} />
           <Route path="blog-lists" element={<BlogList />} />
