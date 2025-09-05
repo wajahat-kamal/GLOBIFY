@@ -182,3 +182,41 @@ export const commentsData = [
     updatedAt: "2025-08-21T11:25:00Z",
   },
 ];
+
+export const dashboardDataBlogs = {
+  blogs: 24, // total published blogs
+  comments: 132, // total comments across blogs
+  drafts: 5, // saved drafts
+  recentBlogs: [
+    {
+      id: 1,
+      title: "The Rise of Artificial Intelligence in Modern Technology",
+      date: "Wed May 28 2025",
+      status: "Published",
+    },
+    {
+      id: 2,
+      title: "How React is Changing the Future of Web Development",
+      date: "Thu Jun 12 2025",
+      status: "Draft",
+    },
+    {
+      id: 3,
+      title: "Understanding Node.js for Scalable Backend Development",
+      date: "Mon Jun 23 2025",
+      status: "Published",
+    },
+    {
+      id: 4,
+      title: "Mastering Tailwind CSS for Modern UI Design",
+      date: "Fri Jul 4 2025",
+      status: "Published",
+    },
+    {
+      id: 5,
+      title: "The Role of MongoDB in MERN Applications",
+      date: "Tue Jul 15 2025",
+      status: "Draft",
+    },
+  ],
+};

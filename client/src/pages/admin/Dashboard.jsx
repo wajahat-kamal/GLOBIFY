@@ -1,22 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FileText, MessageSquare, FileMinus, X } from "lucide-react";
+import { dashboardDataBlogs } from "../../assets/blogsData";
 
 function Dashboard() {
-  // Sample data (ye API se bhi aa sakta hai)
-  const blogs = [
-    {
-      id: 1,
-      title: "The Rise of Artificial Intelligence in Modern Technology",
-      date: "Wed May 28 2025",
-      status: "Published",
-    },
-    {
-      id: 2,
-      title: "How React is Changing the Future of Web Development",
-      date: "Thu Jun 12 2025",
-      status: "Draft",
-    },
-  ];
+  
+  const [dashboardData, setDashboardData] = useState({
+     blogs: 0,
+     comments: 0,
+     drafts: 0,
+     recentBlogs: []
+  })
+
+  const fetchDashboardData = async () => {
+    setDashboardData(dashboardDataBlogs)
+  }
+
+  useEffect(() => {
+    fetchDashboardData()
+  }, [])
+  
+  
 
   return (
     <div className="p-4 sm:p-6 w-full">
@@ -28,7 +31,7 @@ function Dashboard() {
             <FileText className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{blogs.length}</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{dashboardData.blogs}</h1>
             <p className="text-gray-500 text-sm">Blogs</p>
           </div>
         </div>
@@ -39,7 +42,7 @@ function Dashboard() {
             <MessageSquare className="h-8 w-8" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">6</h1>
+            <h1 className="text-2xl font-bold text-gray-900">{dashboardData.comments}</h1>
             <p className="text-gray-500 text-sm">Comments</p>
           </div>
         </div>
@@ -51,14 +54,13 @@ function Dashboard() {
           </div>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              {blogs.filter((b) => b.status === "Draft").length}
+              {dashboardData.drafts}
             </h1>
             <p className="text-gray-500 text-sm">Drafts</p>
           </div>
         </div>
       </div>
 
-      {/* Latest Blogs Table */}
       <div className="bg-white rounded-2xl shadow-md p-6 mt-6">
         <h1 className="text-xl font-bold text-gray-800 mb-4">Latest Blogs</h1>
 
@@ -78,7 +80,7 @@ function Dashboard() {
             </thead>
 
             <tbody>
-              {blogs.map((blog, index) => (
+              {dashboardData.recentBlogs.map((blog, index) => (
                 <tr
                   key={blog.id}
                   className="border-t hover:bg-gray-50 transition"
@@ -107,7 +109,7 @@ function Dashboard() {
                         Publish
                       </button>
                     )}
-                    <button className="p-2 hover:text-red-500 bg-red-100 rounded-full transition">
+                    <button className="p-2 text-red-500 hover:bg-red-100 rounded-full transition">
                       <X className="h-5 w-5" />
                     </button>
                   </td>
@@ -119,7 +121,7 @@ function Dashboard() {
 
         {/* Mobile Card View */}
         <div className="sm:hidden space-y-4">
-          {blogs.map((blog, index) => (
+          {dashboardData.recentBlogs.map((blog, index) => (
             <div
               key={blog.id}
               className="border rounded-xl p-4 shadow-sm hover:shadow-md transition"
@@ -155,7 +157,7 @@ function Dashboard() {
                     Publish
                   </button>
                 )}
-                <button className="p-2 hover:text-red-500 bg-red-100 rounded-full transition">
+                <button className="p-2 text-red-500 hover:bg-red-100 rounded-full transition">
                   <X className="h-5 w-5" />
                 </button>
               </div>
@@ -163,6 +165,7 @@ function Dashboard() {
           ))}
         </div>
       </div>
+
     </div>
   );
 }
