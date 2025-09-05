@@ -1,10 +1,10 @@
 import React from "react";
 import {
-    LayoutDashboard,
-    FilePlus2,
-    ListOrdered,
-    MessageSquare,
-  } from "lucide-react";
+  LayoutDashboard,
+  FilePlus2,
+  ListOrdered,
+  MessageSquare,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 function Sidebar() {
@@ -16,31 +16,31 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="md:w-64 w-20 bg-white border-r border-gray-300 shadow-md flex flex-col">
-    <nav className="flex-1 p-4 space-y-2 text-gray-700">
-      {menuItems.map((item, index) => {
-        const Icon = item.icon;
-        return (
-          <NavLink
-            key={index}
-            to={item.path}
-            className={({ isActive }) =>
-              `flex items-center gap-3 w-full px-4 py-3 rounded-xl font-medium transition-all duration-200
-              ${
-                isActive
-                  ? "bg-secondary text-primary shadow-sm"
-                  : "hover:bg-gray-100 hover:text-gray-900"
-              }`
-            }
-          >
-            <Icon className="h-5 w-5" />
-            <span className="hidden md:inline-block">{item.name}</span>
-          </NavLink>
-        );
-      })}
-    </nav>
-  </aside>
-  
+    <aside className="md:w-64 w-20 bg-white border-r border-gray-200 shadow-sm flex flex-col">
+      <nav className="flex-1 p-4 space-y-2 text-gray-700">
+        {menuItems.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <NavLink
+              key={index}
+              to={item.path}
+              end
+              className={({ isActive }) =>
+                `flex items-center gap-3 w-full px-4 py-3 rounded-xl font-medium cursor-pointer transition-all duration-200
+                ${
+                  isActive
+                    ? "bg-blue-100 text-blue-600 shadow-sm"
+                    : "hover:bg-gray-100 hover:text-gray-900"
+                }`
+              }
+            >
+              <Icon className="h-5 w-5" />
+              <span className="hidden md:inline-block">{item.name}</span>
+            </NavLink>
+          );
+        })}
+      </nav>
+    </aside>
   );
 }
 
