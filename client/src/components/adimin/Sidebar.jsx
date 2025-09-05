@@ -16,7 +16,7 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="md:w-64 w-20 bg-white border-r border-gray-200 shadow-md flex flex-col">
+    <aside className="md:w-64 w-20 bg-white border-r border-gray-300 shadow-md flex flex-col">
     <nav className="flex-1 p-4 space-y-2 text-gray-700">
       {menuItems.map((item, index) => {
         const Icon = item.icon;
