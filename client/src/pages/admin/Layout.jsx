@@ -9,7 +9,7 @@ function Layout() {
  
 
   return (
-    <div className="h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-white">
       {/* Top Navbar */}
       <nav className="bg-white flex items-center justify-between h-16 md:h-20 container mx-auto px-4">
         {/* Left: Logo + Brand */}
