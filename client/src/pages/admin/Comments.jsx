@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { commentsData } from "../../assets/blogsData";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Trash2 } from "lucide-react";
 
 function Comments() {
   const [comments, setComments] = useState([]);
@@ -63,15 +63,22 @@ function Comments() {
                 <h3 className="text-sm font-semibold text-gray-800">
                   {comment.name}
                 </h3>
-                <span
-                  className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    comment.isApproved
-                      ? "bg-green-50 text-green-600 border border-green-200"
-                      : "bg-yellow-50 text-yellow-600 border border-yellow-200"
-                  }`}
-                >
-                  {comment.isApproved ? "Approved" : "Pending"}
-                </span>
+
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`text-xs font-medium px-2.5 py-1 rounded-full border ${
+                      comment.isApproved
+                        ? "bg-green-50 text-green-600 border-green-200"
+                        : "bg-yellow-50 text-yellow-600 border-yellow-200"
+                    }`}
+                  >
+                    {comment.isApproved ? "Approved" : "Pending"}
+                  </span>
+
+                  <button className="p-2 rounded-full border border-red-200 text-red-500 hover:bg-red-100 hover:shadow-sm transition">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
               {/* Content */}
