@@ -149,7 +149,7 @@ export const commentsData = [
     name: "Michael Lee",
     content:
       "Interesting article, but I think we also need to focus on AI ethics.",
-    isApproved: true,
+    isApproved: false,
     createdAt: "2025-08-02T09:30:00Z",
     updatedAt: "2025-08-02T09:40:00Z",
   },
