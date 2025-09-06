@@ -8,7 +8,7 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
   return (
     <tr className="border-b border-gray-400 hover:bg-gray-50 transition-colors">
       {/* Index */}
-      <th className="px-0 py-3 text-gray-600 text-sm font-semibold w-12 align-top">
+      <th className="px-2 py-3 text-gray-600 text-sm font-semibold w-12 align-top">
         {index}
       </th>
 
