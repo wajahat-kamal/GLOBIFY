@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FileText, MessageSquare, FileMinus, X } from "lucide-react";
-import { dashboardDataBlogs } from "../../assets/blogsData";
+import { dashboardBlogsData } from "../../assets/blogsData";
 import BlogTableItem from "../../components/adimin/BlogTableItem";
 
 function Dashboard() {
@@ -11,12 +11,12 @@ function Dashboard() {
     recentBlogs: [],
   });
 
-  const fetchDashboardData = async () => {
-    setDashboardData(dashboardDataBlogs);
+  const fetchBlogs = async () => {
+    setDashboardData(dashboardBlogsData);
   };
 
   useEffect(() => {
-    fetchDashboardData();
+    fetchBlogs();
   }, []);
 
   return (
@@ -91,7 +91,7 @@ function Dashboard() {
               {dashboardData.recentBlogs.map((blog, index) => (
                 <BlogTableItem
                   key={blog.id}
-                  fetchBlogs={fetchDashboardData}
+                  fetchBlogs={fetchBlogs}
                   index={index + 1}
                   blog={blog}
                 />

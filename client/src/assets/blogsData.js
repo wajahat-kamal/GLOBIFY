@@ -183,7 +183,7 @@ export const commentsData = [
   },
 ];
 
-export const dashboardDataBlogs = {
+export const dashboardBlogsData = {
   blogs: 24, // total published blogs
   comments: 132, // total comments across blogs
   drafts: 5, // saved drafts
