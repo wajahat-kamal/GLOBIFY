@@ -24,7 +24,7 @@ function Dashboard() {
       {/* Stats Cards */}
       <div className="flex flex-col md:flex-row flex-wrap items-start justify-start gap-6">
         {/* Blogs Card */}
-        <div className="bg-gray-50 min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
+        <div className="bg-secondary min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
           <div className="p-3 rounded-xl bg-blue-100 text-blue-500 flex items-center justify-center">
             <FileText className="h-8 w-8" />
           </div>
@@ -37,7 +37,7 @@ function Dashboard() {
         </div>
 
         {/* Comments Card */}
-        <div className="bg-gray-50 min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
+        <div className="bg-secondary min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
           <div className="p-3 rounded-xl bg-green-100 text-green-500 flex items-center justify-center">
             <MessageSquare className="h-8 w-8" />
           </div>
@@ -50,7 +50,7 @@ function Dashboard() {
         </div>
 
         {/* Drafts Card */}
-        <div className="bg-gray-50 min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
+        <div className="bg-secondary min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
           <div className="p-3 rounded-xl bg-orange-100 text-orange-500 flex items-center justify-center">
             <FileMinus className="h-8 w-8" />
           </div>
@@ -63,7 +63,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="bg-gray-50 rounded-2xl shadow-md p-6 mt-6">
+      <div className="bg-secondary rounded-2xl shadow-md p-6 mt-6">
         {/* Heading */}
         <h1 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
           <FileText className="h-5 w-5 text-primary" />
