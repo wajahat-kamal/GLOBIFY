@@ -9,7 +9,7 @@ function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       {/* Top Navbar */}
-      <nav className="bg-white border-b border-gray-200 shadow-sm flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+      <nav className="bg-gray-50 border-b border-gray-200 shadow-sm flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Left: Logo + Brand */}
         <div
           className="flex items-center gap-3 cursor-pointer"

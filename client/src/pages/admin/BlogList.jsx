@@ -15,7 +15,7 @@ function BlogLists() {
   }, []);
 
   return (
-    <div className="p-6 bg-white">
+    <div className="p-6 bg-gray-50">
       {/* Header Section */}
       <div className="mb-6">
         <div className="flex items-center gap-2">
