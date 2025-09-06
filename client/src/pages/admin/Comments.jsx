@@ -14,10 +14,7 @@ function Comments() {
     fetchComments();
   }, []);
 
-  // Filtered comments
-  const filteredComments = comments.filter(
-    (c) => (filter === "Approved" ? c.isApproved : !c.isApproved)
-  );
+ 
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
@@ -54,9 +51,8 @@ function Comments() {
       </div>
 
       {/* Comments List */}
-      {/* <div className="space-y-4">
-        {filteredComments.length > 0 ? (
-          filteredComments.map((comment) => (
+      <div className="space-y-4">
+        {comments.map((comment) => (
             <div
               key={comment.id}
               className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition"
@@ -87,13 +83,9 @@ function Comments() {
                 })}
               </p>
             </div>
-          ))
-        ) : (
-          <p className="text-gray-500 text-sm text-center py-6">
-            No comments found for this filter.
-          </p>
-        )}
-      </div> */}
+          ))}
+   
+      </div>
 
     </div>
   );
