@@ -14,10 +14,8 @@ function Comments() {
     fetchComments();
   }, []);
 
- 
-
   return (
-    <div className="p-6 bg-secondary min-h-screen">
+    <div className="p-6 bg-secondary min-h-screen md:m-5 m-0 rounded-xl">
       {/* Header Section */}
       <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-2">
@@ -42,7 +40,7 @@ function Comments() {
             className={`rounded-full border text-xs py-1.5 px-4 transition ${
               filter === "Not Approved"
                 ? "border-primary bg-primary/10 text-primary font-medium"
-                : "border-gray-300 text-gray-600 hover:bg-gray-100"
+                : "border-gray-500 text-gray-600 hover:bg-gray-200"
             }`}
           >
             Not Approved
@@ -52,18 +50,19 @@ function Comments() {
 
       {/* Comments List */}
       <div className="space-y-4">
-        {comments.map((comment) => (
+        {comments.map((comment) => {
+          const commentDate = new Date(comment.createdAt);
+
+          return (
             <div
               key={comment.id}
               className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition"
             >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-800">
-                    {comment.name}
-                  </h3>
-                  <p className="text-xs text-gray-500">{comment.email}</p>
-                </div>
+              {/* Header: Name + Status */}
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-semibold text-gray-800">
+                  {comment.name}
+                </h3>
                 <span
                   className={`text-xs font-medium px-2 py-1 rounded-full ${
                     comment.isApproved
@@ -74,19 +73,24 @@ function Comments() {
                   {comment.isApproved ? "Approved" : "Pending"}
                 </span>
               </div>
-              <p className="text-gray-700 text-sm mt-3">{comment.message}</p>
+
+              {/* Content */}
+              <p className="text-gray-700 text-sm mt-1 leading-relaxed">
+                {comment.content}
+              </p>
+
+              {/* Footer: Date */}
               <p className="text-xs text-gray-400 mt-2">
-                {new Date(comment.createdAt).toLocaleDateString("en-US", {
+                {commentDate.toLocaleDateString("en-US", {
                   year: "numeric",
                   month: "short",
                   day: "numeric",
                 })}
               </p>
             </div>
-          ))}
-   
+          );
+        })}
       </div>
-
     </div>
   );
 }
