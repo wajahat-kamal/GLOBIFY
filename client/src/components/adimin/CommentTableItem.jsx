@@ -10,9 +10,9 @@ function CommentTableItem({ comment }) {
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold text-gray-800">{comment.name}</h3>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center md:gap-3 gap-1">
           <span
-            className={`text-xs font-medium px-2.5 py-1 rounded-full border ${
+            className={`text-xs font-medium px-2.5 py-1.5 rounded-full border ${
               comment.isApproved
                 ? "bg-green-50 text-green-600 border-green-200"
                 : "bg-yellow-50 text-yellow-600 border-yellow-200"
@@ -21,7 +21,7 @@ function CommentTableItem({ comment }) {
             {comment.isApproved ? "Approved" : "Pending"}
           </span>
 
-          <button className="p-2 rounded-full border border-red-200 text-red-500 hover:bg-red-100 hover:shadow-sm transition">
+          <button className="p-1.5 rounded-full border border-red-200 text-red-500 hover:bg-red-100 hover:shadow-sm transition">
             <Trash2 className="w-4 h-4" />
           </button>
         </div>
