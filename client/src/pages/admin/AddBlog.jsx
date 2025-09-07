@@ -32,7 +32,7 @@ function AddBlogs() {
             <img
               src={!image ? uploadImage : URL.createObjectURL(image)}
               alt="thumbnail preview"
-              className=" object-cover rounded-lg"
+              className="cursor-pointer object-cover rounded-lg"
             />
           </div>
           <input
@@ -87,7 +87,7 @@ function AddBlogs() {
           <button
             type="button"
             onClick={generateContent}
-            className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow hover:bg-primary/90 transition"
+            className="absolute bottom-3 right-3 cursor-pointer inline-flex items-center gap-1.5 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow hover:bg-primary/90 transition"
           >
             ⚡ AI Generate
           </button>
@@ -107,7 +107,7 @@ function AddBlogs() {
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full appearance-none px-4 py-3 border border-gray-300 rounded-lg bg-white shadow-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
+            className="w-full  cursor-pointer appearance-none px-4 py-3 border border-gray-300 rounded-lg bg-white shadow-sm text-gray-700 focus:ring-2 focus:ring-primary focus:border-primary outline-none transition"
           >
             <option value="All">All</option>
             <option value="Technology">Technology</option>
