@@ -134,22 +134,29 @@ function AddBlogs() {
             </svg>
           </div>
         </div>
-        {/* Publish Toggle */}
-        <div className="flex items-center gap-3 mt-4">
-          <p className="text-sm font-medium text-gray-600">Publish Now</p>
-          <label className="relative inline-flex items-center cursor-pointer">
-            <input
-              type="checkbox"
-              checked={isPublished}
-              onChange={(e) => setIsPublished(e.target.checked)}
-              className="sr-only peer"
-            />
-            <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-primary transition-colors"></div>
-            <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full border shadow-sm transform peer-checked:translate-x-5 transition-transform"></div>
-          </label>
-        </div>
-
       </div>
+
+      {/* Publish Toggle */}
+      <div className="flex items-center gap-3 mt-4">
+        <p className="text-sm font-medium text-gray-600">Publish Now</p>
+        <label className="relative inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            checked={isPublished}
+            onChange={(e) => setIsPublished(e.target.checked)}
+            className="sr-only peer"
+          />
+          <div className="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-primary transition-colors"></div>
+          <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full border shadow-sm transform peer-checked:translate-x-5 transition-transform"></div>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full max-w-lg bg-primary text-white font-medium px-5 py-2.5 rounded-lg shadow hover:bg-primary/90 hover:shadow-md transition-all"
+      >
+        Add Blog
+      </button>
     </form>
   );
 }
