@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import uploadImage from "../../assets/uploadImage.svg";
-import { Upload } from "lucide-react";
 
 function AddBlogs() {
   const [image, setImage] = useState(null);
@@ -17,7 +16,7 @@ function AddBlogs() {
   };
 
   return (
-    <form className="bg-secondary p-6 m-5 rounded-xl shadow-sm">
+    <form className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm">
       {/* Thumbnail Upload */}
       <div className="mb-6">
         <p className="text-sm font-medium text-gray-700 mb-2">
@@ -33,10 +32,8 @@ function AddBlogs() {
               alt="thumbnail preview"
               className=" object-cover rounded-lg"
             />
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Upload className="w-4 h-4 text-gray-500" />
-              <span>Click to upload</span>
-            </div>
+            
+            
           </div>
           <input
             type="file"
