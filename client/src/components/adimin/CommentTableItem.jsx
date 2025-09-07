@@ -1,7 +1,7 @@
 import React from "react";
 import { Trash2 } from "lucide-react";
 
-function CommentTableItem({ comment }) {
+function CommentTableItem({ comment, fetchComments }) {
   const commentDate = new Date(comment.createdAt);
 
   return (

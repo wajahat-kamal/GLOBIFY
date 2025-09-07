@@ -57,7 +57,7 @@ function Comments() {
       {/* Comments List */}
       <div className="space-y-4">
         {filteredComments.map((comment) => (
-          <CommentTableItem key={comment.id} comment={comment} />
+          <CommentTableItem key={comment.id} comment={comment} fetchComments={fetchComments}/>
         ))}
       </div>
     </div>
