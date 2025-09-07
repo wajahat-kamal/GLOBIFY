@@ -20,7 +20,7 @@ function AddBlogs() {
   return (
     <form className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm">
       {/* Thumbnail Upload */}
-      <div className="mb-6">
+      <div className="mb-4">
         <p className="text-sm font-medium text-gray-600 mb-2">
           Upload Thumbnail
         </p>
@@ -47,7 +47,7 @@ function AddBlogs() {
       </div>
 
       {/* Title Input */}
-      <div className="mb-6">
+      <div className="mb-4">
         <label
           htmlFor="title"
           className="block text-sm font-medium text-gray-600 mb-2"
@@ -66,7 +66,7 @@ function AddBlogs() {
       </div>
 
       {/* Blog Description */}
-      <div className="mb-6 relative w-full max-w-lg">
+      <div className="mb-4 relative w-full max-w-lg">
         <label
           htmlFor="description"
           className="block text-sm font-semibold text-gray-700 mb-2"
@@ -95,7 +95,7 @@ function AddBlogs() {
       </div>
 
       {/* Category Select */}
-      <div className="mb-6">
+      <div className="mb-4">
         <label
           htmlFor="category"
           className="block text-sm font-semibold text-gray-700 mb-2"
