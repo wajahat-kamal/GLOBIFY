@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import User from "../models/user.model";
 
 export const signup = async (req, res) => {
@@ -12,8 +11,29 @@ export const signup = async (req, res) => {
       });
     }
 
-    if (condition) {
-      
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid email"
+      })
+    }
+
+    const existingEmail = await User.findOne({email})
+
+    if (existingEmail) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already exist"
+      })
+    }
+
+    if (password < 6) {
+      return res.json({
+        success: false,
+        message: "password min lenght 6"
+      })
     }
 
     const hashPassword = await bcrypt.hash(password, 10);
@@ -26,7 +46,7 @@ export const signup = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: "",
+      message: "Account created succesfully",
     });
   } catch (error) {
     console.log(error);
