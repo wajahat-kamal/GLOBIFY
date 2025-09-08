@@ -6,7 +6,8 @@ import Dashboard from "./pages/admin/Dashboard";
 import BlogList from "./pages/admin/BlogList";
 import Comments from "./pages/admin/Comments";
 import AddBlog from "./pages/admin/AddBlog";
-import Login from "./components/adimin/Login";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 import "quill/dist/quill.snow.css"
 
@@ -17,9 +18,12 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+
 
         {/* Admin Routes */}
-        <Route path="/admin" element={true ? <Layout /> : <Login/>}>
+        <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="add-blogs" element={<AddBlog />} />
           <Route path="blog-lists" element={<BlogList />} />
