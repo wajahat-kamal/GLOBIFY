@@ -1,57 +1,57 @@
-import User from "../models/user.model";
+import bcrypt from "bcryptjs";
+import User from "../models/user.model.js";
 
 export const signup = async (req, res) => {
   try {
     const { fullName, email, password } = req.body;
 
     if (!fullName || !email || !password) {
-      return res.status(404).json({
+      return res.status(400).json({
         success: false,
         message: "All fields are required",
       });
     }
 
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
     if (!emailRegex.test(email)) {
       return res.status(400).json({
         success: false,
-        message: "Invalid email"
-      })
+        message: "Invalid email format",
+      });
     }
 
-    const existingEmail = await User.findOne({email})
-
-    if (existingEmail) {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
       return res.status(400).json({
         success: false,
-        message: "Email already exist"
-      })
+        message: "Email already exists",
+      });
     }
 
-    if (password < 6) {
-      return res.json({
+    if (password.length < 6) {
+      return res.status(400).json({
         success: false,
-        message: "password min lenght 6"
-      })
+        message: "Password must be at least 6 characters",
+      });
     }
 
-    const hashPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     await User.create({
       fullName,
       email,
-      password: hashPassword,
+      password: hashedPassword,
     });
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
-      message: "Account created succesfully",
+      message: "Account created successfully",
     });
   } catch (error) {
-    console.log(error);
-    res.json({
+    console.error("Signup error:", error.message);
+    return res.status(500).json({
       success: false,
+      message: "Server error, please try again later",
     });
   }
 };
