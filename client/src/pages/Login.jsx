@@ -1,11 +1,12 @@
 "use client"; // (Next.js App Router ke liye)
 
 import { useState } from "react";
-import { Mail, Lock, Loader2 } from "lucide-react";
+import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -44,11 +45,10 @@ export default function Login() {
             />
           </div>
 
-          {/* Password */}
           <div className="flex items-center border rounded-lg px-3 py-2">
             <Lock className="w-5 h-5 text-gray-400 mr-2" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} // 👈 toggle
               name="password"
               placeholder="Password"
               value={form.password}
@@ -56,9 +56,14 @@ export default function Login() {
               className="w-full outline-none text-gray-700"
               required
             />
+            <div
+              className="cursor-pointer text-gray-500 hover:text-gray-700"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff /> : <Eye />}
+            </div>
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}

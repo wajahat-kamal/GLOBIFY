@@ -32,7 +32,7 @@ export default function Signup() {
 
       setMessage(res.data.message);
       setTimeout(() => {
-        navigate("/admin");
+        navigate("/login");
       }, 1000);
     } catch (error) {
       console.error(error);
