@@ -113,3 +113,12 @@ export const login = async (req, res) => {
     });
   }
 };
+
+export const logout = () => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
