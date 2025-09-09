@@ -9,7 +9,6 @@ export default function Navbar() {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user?.user);
 
-
   return (
     <header className="w-full backdrop-blur-md  absolute top-0 z-50">
       <div className="container mx-auto px-4 md:px-8">
@@ -32,15 +31,27 @@ export default function Navbar() {
           {/* Right: Auth button */}
 
           {user ? (
-            <div onClick={() => navigate("/admin")} className="flex items-center gap-2 pl-3 pr-6 py-1.5 rounded-full bg-primary shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+            <div
+              onClick={() => navigate("/admin")}
+              className="flex items-center gap-3 pl-3 pr-6 py-1 h-14 rounded-full bg-primary shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+            >
+              {/* Avatar */}
               <img
                 src={avatar}
                 alt="Avatar"
-                className="w-9 h-9 rounded-full border border-white/20 shadow-md object-cover"
+                className="w-10 h-10 rounded-full border border-white/20 shadow-md object-cover"
               />
-              <span className="font-semibold text-white text-sm md:text-base tracking-wide">
-                {user.fullName || "User"}
-              </span>
+
+              {/* Text + Icon */}
+              <div className="flex flex-col text-white leading-none">
+                <div className="flex items-center gap-1 text-sm md:text-base font-semibold tracking-wide">
+                  <span>Dashboard</span>
+                  <LogIn className="w-4 h-4" />
+                </div>
+                <span className="text-xs md:text-sm font-medium opacity-90">
+                  {user?.fullName || "User"}
+                </span>
+              </div>
             </div>
           ) : (
             <button
