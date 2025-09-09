@@ -2,14 +2,16 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(`${process.env.MONGODB_URI}/globify`);
+    console.log("🔄 Connecting to MongoDB...");
 
-    mongoose.connection.on("connected", () => {
-      console.log("✅ Database is Connected");
+    await mongoose.connect(process.env.MONGODB_URI, {
+      dbName: "globify", 
     });
+
+    console.log("✅ Database Connected Successfully");
   } catch (error) {
     console.error("❌ Database connection failed:", error.message);
-    process.exit(1); 
+    process.exit(1);
   }
 };
 
