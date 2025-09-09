@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,7 +17,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setMessage("")
+    setMessage("");
 
     try {
       const res = await axios.post(
@@ -27,14 +26,13 @@ export default function Login() {
         { withCredentials: true }
       );
 
-      if (res.data.message) {
-        setMessage(res.data.message)
+      if (res.data.success) {
+        setMessage(res.data.message);
         setTimeout(() => {
-          navigate("/admin")
+          navigate("/admin");
         }, 1000);
       } else {
-        setMessage(res.data.message)
-
+        setMessage(res.data.message);
       }
     } catch (error) {
       console.error(error);
@@ -66,10 +64,11 @@ export default function Login() {
             />
           </div>
 
+          {/* Password */}
           <div className="flex items-center border rounded-lg px-3 py-2">
             <Lock className="w-5 h-5 text-gray-400 mr-2" />
             <input
-              type={showPassword ? "text" : "password"} // 👈 toggle
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Password"
               value={formData.password}
@@ -85,6 +84,7 @@ export default function Login() {
             </div>
           </div>
 
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
@@ -104,6 +104,7 @@ export default function Login() {
         {message && (
           <p
             className={`mt-3 text-center text-sm ${
+              message.toLowerCase().includes("welcome") ||
               message.toLowerCase().includes("success")
                 ? "text-green-600"
                 : "text-red-500"
