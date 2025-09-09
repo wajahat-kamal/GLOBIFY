@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { commentsData } from "../../assets/blogsData";
 import { MessageSquare } from "lucide-react";
-import CommentTableItem from "../../components/adimin/CommentTableItem";
+import CommentTableItem from "../../components/admin/CommentTableItem";
 
 function Comments() {
   const [comments, setComments] = useState([]);

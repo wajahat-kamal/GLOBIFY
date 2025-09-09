@@ -8,6 +8,7 @@ import Comments from "./pages/admin/Comments";
 import AddBlog from "./pages/admin/AddBlog";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import "quill/dist/quill.snow.css"
 
@@ -21,9 +22,15 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
-
         {/* Admin Routes */}
-        <Route path="/admin" element={<Layout />}>
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Dashboard />} />
           <Route path="add-blogs" element={<AddBlog />} />
           <Route path="blog-lists" element={<BlogList />} />

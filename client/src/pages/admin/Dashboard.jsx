@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FileText, MessageSquare, FileMinus, X } from "lucide-react";
 import { dashboardBlogsData } from "../../assets/blogsData";
-import BlogTableItem from "../../components/adimin/BlogTableItem";
+import BlogTableItem from "../../components/admin/BlogTableItem";
 
 function Dashboard() {
   const [dashboardData, setDashboardData] = useState({

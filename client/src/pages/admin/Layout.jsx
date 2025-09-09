@@ -1,8 +1,8 @@
 import React from "react";
 import logo from "../../assets/globify-logo.png";
 import { Outlet, useNavigate } from "react-router-dom";
-import Sidebar from "../../components/adimin/Sidebar";
-import LogoutButton from "../../components/adimin/LogoutButton";
+import Sidebar from "../../components/admin/Sidebar";
+import LogoutButton from "../../components/admin/LogoutButton";
 
 function Layout() {
   const navigate = useNavigate();

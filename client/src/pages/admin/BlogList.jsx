@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { dashboardBlogsData } from "../../assets/blogsData";
-import BlogTableItem from "../../components/adimin/BlogTableItem";
+import BlogTableItem from "../../components/admin/BlogTableItem";
 import { FileText } from "lucide-react";
 
 function BlogLists() {
