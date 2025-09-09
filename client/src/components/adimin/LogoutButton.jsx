@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clearUser } from "../../redux/userSlice";
+import { logoutUser } from "../../redux/userSlice";
 
 export default function LogoutButton() {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export default function LogoutButton() {
       });
 
       if (res.data.success) {
-        dispatch(clearUser());
+        dispatch(logoutUser());
         setShowPopup(false);
         navigate("/");
       }
