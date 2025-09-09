@@ -22,7 +22,7 @@ export default function Signup() {
 
     try {
       const res = await axios.post(
-        "http://localhost:8000/user/signup",
+        "http://localhost:8000/api/v1/user/signup",
         formData
       );
 
