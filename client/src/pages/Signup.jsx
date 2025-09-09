@@ -47,7 +47,7 @@ export default function Signup() {
 
   return (
     <section className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6">
         <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Create Your Account
         </h1>
@@ -115,15 +115,16 @@ export default function Signup() {
         </p>
 
         {message && (
-          <p
-            className={`mt-3 text-center text-sm ${
+          <div
+            className={`mt-2 text-center text-sm px-3 py-2 rounded-lg font-medium ${
+              message.toLowerCase().includes("welcome") ||
               message.toLowerCase().includes("success")
-                ? "text-green-600"
-                : "text-red-500"
+                ? "bg-green-100 text-green-700 border border-green-200"
+                : "bg-red-100 text-red-700 border border-red-200"
             }`}
           >
             {message}
-          </p>
+          </div>
         )}
       </div>
     </section>
