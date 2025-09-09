@@ -3,9 +3,12 @@ import { LogIn } from "lucide-react";
 import logo from "../assets/globify-logo.png";
 import { useNavigate } from "react-router-dom";
 import avatar from "../assets/user-avatar.png";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const navigate = useNavigate();
+  const user = useSelector((state) => state.user?.user);
+
 
   return (
     <header className="w-full backdrop-blur-md  absolute top-0 z-50">
@@ -28,7 +31,7 @@ export default function Navbar() {
 
           {/* Right: Auth button */}
 
-          {true ? (
+          {user ? (
             <div className="flex items-center gap-2 pl-2 pr-6 py-1.5 rounded-full bg-primary shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
               <img
                 src={avatar}
@@ -36,7 +39,7 @@ export default function Navbar() {
                 className="w-9 h-9 rounded-full border border-white/20 shadow-md object-cover"
               />
               <span className="font-semibold text-white text-sm md:text-base tracking-wide">
-                Wajahat Kamal
+                {user.fullName || "User"}
               </span>
             </div>
           ) : (

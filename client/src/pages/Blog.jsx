@@ -7,7 +7,7 @@ import Moment from "moment";
 import Avatar from "../assets/user-avatar.png"; 
 import Loader from "../components/Loader";
 
-export default function Blog() {
+function Blog() {
   const { id } = useParams();
 
   const [data, setData] = useState(null);
@@ -154,3 +154,5 @@ export default function Blog() {
     </div>
   ) : <Loader />
 }
+
+export default Blog;
