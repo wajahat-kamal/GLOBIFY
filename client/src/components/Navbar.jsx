@@ -27,12 +27,14 @@ export default function Navbar() {
 
           {/* Right: Auth button */}
           <button
-            onClick={() => {false ? navigate("/admin") : navigate("/signup")}}
+            onClick={() => {
+              false ? navigate("/admin") : navigate("/login");
+            }}
             className="inline-flex items-center justify-center gap-2 md:px-6 px-4 py-3 rounded-full text-sm font-medium
-                       bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
-                       transition-all duration-300 min-w-[140px]"
+             bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
+             transition-all duration-300 min-w-[140px]"
           >
-            <span>Admin Login</span>
+            <span>Login / Signup</span>
             <LogIn className="h-4 w-4" />
           </button>
         </nav>
