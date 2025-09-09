@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { User, Mail, Lock, Loader2 } from "lucide-react";
+import { User, Mail, Lock, Loader2, Eye, EyeOff } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Signup() {
@@ -10,6 +11,9 @@ export default function Signup() {
   });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,6 +31,9 @@ export default function Signup() {
       );
 
       setMessage(res.data.message);
+      setTimeout(() => {
+        navigate("/admin");
+      }, 1000);
     } catch (error) {
       console.error(error);
       setMessage(
@@ -75,7 +82,7 @@ export default function Signup() {
           <div className="flex items-center border rounded-lg px-3 py-2">
             <Lock className="w-5 h-5 text-gray-400 mr-2" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"} 
               name="password"
               placeholder="Password"
               value={formData.password}
@@ -83,6 +90,12 @@ export default function Signup() {
               className="w-full outline-none text-gray-700"
               required
             />
+            <div
+              className="cursor-pointer text-gray-500 hover:text-gray-700"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <EyeOff /> : <Eye />}
+            </div>
           </div>
 
           <button
