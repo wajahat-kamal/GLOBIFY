@@ -1,25 +1,41 @@
-"use client"; // (Next.js App Router ke liye)
-
 import { useState } from "react";
 import { User, Mail, Lock, Loader2 } from "lucide-react";
+import axios from "axios";
 
 export default function Signup() {
-  const [form, setForm] = useState({ fullName: "", email: "", password: "" });
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setMessage("");
 
-    // 👇 yahan API call karni hogi (backend connect karne ke baad)
-    setTimeout(() => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/user/signup",
+        formData
+      );
+
+      setMessage(res.data.message);
+    } catch (error) {
+      console.error(error);
+      setMessage(
+        error.response?.data?.message ||
+          "Something went wrong. Please try again."
+      );
+    } finally {
       setLoading(false);
-      alert("Signup form submitted!");
-    }, 1500);
+    }
   };
 
   return (
@@ -30,49 +46,45 @@ export default function Signup() {
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Full Name */}
           <div className="flex items-center border rounded-lg px-3 py-2">
             <User className="w-5 h-5 text-gray-400 mr-2" />
             <input
               type="text"
               name="fullName"
               placeholder="Full Name"
-              value={form.fullName}
+              value={formData.fullName}
               onChange={handleChange}
               className="w-full outline-none text-gray-700"
               required
             />
           </div>
 
-          {/* Email */}
           <div className="flex items-center border rounded-lg px-3 py-2">
             <Mail className="w-5 h-5 text-gray-400 mr-2" />
             <input
               type="email"
               name="email"
               placeholder="Email"
-              value={form.email}
+              value={formData.email}
               onChange={handleChange}
               className="w-full outline-none text-gray-700"
               required
             />
           </div>
 
-          {/* Password */}
           <div className="flex items-center border rounded-lg px-3 py-2">
             <Lock className="w-5 h-5 text-gray-400 mr-2" />
             <input
               type="password"
               name="password"
               placeholder="Password"
-              value={form.password}
+              value={formData.password}
               onChange={handleChange}
               className="w-full outline-none text-gray-700"
               required
             />
           </div>
 
-          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -88,6 +100,18 @@ export default function Signup() {
             Login
           </a>
         </p>
+
+        {message && (
+          <p
+            className={`mt-3 text-center text-sm ${
+              message.toLowerCase().includes("success")
+                ? "text-green-600"
+                : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </section>
   );
