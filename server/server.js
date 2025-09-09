@@ -2,12 +2,17 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import connectDB from "./configs/db.js";
+import userRoute from "./routes/user.route.js"
 
 const app = express();
 
 // Middlewares
 app.use(cors());           
-app.use(express.json());   
+app.use(express.json());
+
+
+// Routes
+app.use("/api/v1/user", userRoute)
 
 app.get("/", (req, res) => {
   res.send("APIs is Working 🚀");
