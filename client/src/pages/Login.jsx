@@ -4,12 +4,13 @@ import { useState } from "react";
 import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
 
 export default function Login() {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -38,7 +39,7 @@ export default function Login() {
               type="email"
               name="email"
               placeholder="Email"
-              value={form.email}
+              value={formData.email}
               onChange={handleChange}
               className="w-full outline-none text-gray-700"
               required
@@ -51,7 +52,7 @@ export default function Login() {
               type={showPassword ? "text" : "password"} // 👈 toggle
               name="password"
               placeholder="Password"
-              value={form.password}
+              value={formData.password}
               onChange={handleChange}
               className="w-full outline-none text-gray-700"
               required
