@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/userSlice";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -9,6 +11,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,6 +30,8 @@ export default function Login() {
       );
 
       if (res.data.success) {
+        // Save user in Redux so Navbar can read it
+        dispatch(setUser(res.data.user));
         setMessage(res.data.message);
         setTimeout(() => {
           navigate("/admin");

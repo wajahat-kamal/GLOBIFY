@@ -32,7 +32,7 @@ export default function Navbar() {
           {/* Right: Auth button */}
 
           {user ? (
-            <div className="flex items-center gap-2 pl-2 pr-6 py-1.5 rounded-full bg-primary shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
+            <div onClick={() => navigate("/admin")} className="flex items-center gap-2 pl-2 pr-6 py-1.5 rounded-full bg-primary shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer">
               <img
                 src={avatar}
                 alt="Avatar"

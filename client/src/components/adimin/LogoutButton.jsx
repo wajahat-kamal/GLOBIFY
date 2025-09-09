@@ -1,10 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearUser } from "../../redux/userSlice";
 
 export default function LogoutButton() {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
+  const dispatch = useDispatch();
 
   const confirmLogout = async () => {
     try {
@@ -13,8 +16,9 @@ export default function LogoutButton() {
       });
 
       if (res.data.success) {
-        setShowPopup(false); // popup band karo
-        navigate("/"); // home page pe redirect karo
+        dispatch(clearUser());
+        setShowPopup(false);
+        navigate("/");
       }
     } catch (error) {
       console.error("Logout error:", error);
@@ -26,7 +30,7 @@ export default function LogoutButton() {
     <>
       {/* Logout Button */}
       <button
-        onClick={() => setShowPopup(true)} // pehle popup khulega
+        onClick={() => setShowPopup(true)}
         className="inline-flex items-center justify-center gap-2 px-4 md:px-8 py-2 rounded-full text-md font-medium
                    bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
                    transition-all duration-300"
