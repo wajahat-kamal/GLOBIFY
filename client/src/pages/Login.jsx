@@ -1,13 +1,15 @@
-"use client"; // (Next.js App Router ke liye)
 
 import { useState } from "react";
 import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,12 +18,30 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setMessage("")
 
-    // 👇 yahan API call karni hai (backend connect karne ke baad)
-    setTimeout(() => {
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/api/v1/user/login",
+        formData,
+        { withCredentials: true }
+      );
+
+      if (res.data.message) {
+        setMessage(res.data.message)
+        setTimeout(() => {
+          navigate("/admin")
+        }, 1000);
+      } else {
+        setMessage(res.data.message)
+
+      }
+    } catch (error) {
+      console.error(error);
+      setMessage(error.response?.data?.message || "Something went wrong.");
+    } finally {
       setLoading(false);
-      alert("Login form submitted!");
-    }, 1500);
+    }
   };
 
   return (
@@ -80,6 +100,18 @@ export default function Login() {
             Sign Up
           </a>
         </p>
+
+        {message && (
+          <p
+            className={`mt-3 text-center text-sm ${
+              message.toLowerCase().includes("success")
+                ? "text-green-600"
+                : "text-red-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
       </div>
     </section>
   );
