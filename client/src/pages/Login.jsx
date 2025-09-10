@@ -20,7 +20,7 @@ export default function Login() {
         
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
+          <h1 className="text-2xl font-bold text-gray-800">
             <span className="text-primary">Admin</span> Login
           </h1>
           <p className="text-sm text-gray-500 mt-2">
