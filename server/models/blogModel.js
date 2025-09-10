@@ -19,7 +19,7 @@ const blogSchema = new mongoose.Schema(
       default: "Startup", 
       trim: true,
     },
-    isPublish: {
+    isPublished: {
       type: Boolean,
       default: false, 
     },
