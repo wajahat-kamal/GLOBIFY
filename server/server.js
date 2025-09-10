@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./configs/db.js";
+import adminRouter from "./routes/adminRoute.js";
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 
+// routes
+app.use("/api/admin/", adminRouter)
 
 app.get("/", (req, res) => {
   res.send("APIs is Working 🚀");
