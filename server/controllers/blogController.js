@@ -4,7 +4,7 @@ import Blog from "../models/blogModel.js";
 
 export const addBlog = async (req, res) => {
   try {
-    const { title, description, category, isPublished } = JSON.parse(req.body);
+    const { title, description, category, isPublished } = req.body;
     const imageFile = req.file;
 
     if (!title || !description || !category) {

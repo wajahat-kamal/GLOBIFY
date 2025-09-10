@@ -4,6 +4,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./configs/db.js";
 import adminRouter from "./routes/adminRoute.js";
+import blogRouter from "./routes/blogRoute.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/admin/", adminRouter)
+app.use("/api/blog/", blogRouter)
 
 app.get("/", (req, res) => {
   res.send("APIs is Working 🚀");
