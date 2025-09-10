@@ -16,8 +16,8 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-indigo-100 px-4">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8 border border-gray-100">
         
         {/* Header */}
         <div className="text-center mb-8">
