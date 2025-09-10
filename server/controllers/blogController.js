@@ -4,7 +4,7 @@ import Blog from "../models/blogModel.js";
 
 export const addBlog = async (req, res) => {
   try {
-    const { title, description, category, isPublished } = req.body;
+    let { title, description, category, isPublished } = req.body;
     const imageFile = req.file;
 
     if (!title || !description || !category) {
@@ -13,6 +13,11 @@ export const addBlog = async (req, res) => {
         message: "All fields are required",
       });
     }
+
+      // Convert string to boolean
+      if (typeof isPublished === "string") {
+        isPublished = isPublished.toLowerCase() === "true";
+      }
 
     if (!imageFile) {
       return res.status(400).json({
