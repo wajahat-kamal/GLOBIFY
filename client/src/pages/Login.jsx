@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
 
-export default function AdminLogin() {
+export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
@@ -11,8 +11,7 @@ export default function AdminLogin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Handle login logic here
-    console.log("Admin Login:", formData);
+    // Handle login logic here
   };
 
   return (
@@ -22,10 +21,9 @@ export default function AdminLogin() {
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
-            <LogIn className="w-6 h-6 text-primary" />
-            Admin Login
+            <span className="text-primary">Admin</span> Login
           </h1>
-          <p className="text-gray-500 text-sm mt-2">
+          <p className="text-sm text-gray-500 mt-2">
             login to manage your blog dashboard
           </p>
         </div>
