@@ -3,7 +3,6 @@ import "dotenv/config";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./configs/db.js";
-import userRoute from "./routes/user.route.js"
 
 const app = express();
 
@@ -18,8 +17,6 @@ app.use(cookieParser());
 app.use(express.json());
 
 
-// Routes
-app.use("/api/v1/user", userRoute)
 
 app.get("/", (req, res) => {
   res.send("APIs is Working 🚀");

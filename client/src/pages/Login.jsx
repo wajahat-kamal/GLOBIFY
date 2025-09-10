@@ -1,124 +1,91 @@
 import { useState } from "react";
-import { Mail, Lock, Loader2, EyeOff, Eye } from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { setUser } from "../redux/userSlice";
+import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
 
-export default function Login() {
+export default function AdminLogin() {
   const [formData, setFormData] = useState({ email: "", password: "" });
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMessage("");
-
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/api/v1/user/login",
-        formData,
-        { withCredentials: true }
-      );
-
-      if (res.data.success) {
-        // Save user in Redux so Navbar can read it
-        dispatch(setUser(res.data.user));
-        setMessage(res.data.message);
-        setTimeout(() => {
-          navigate("/admin");
-        }, 1000);
-      } else {
-        setMessage(res.data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      setMessage(error.response?.data?.message || "Something went wrong.");
-    } finally {
-      setLoading(false);
-    }
+    // TODO: Handle login logic here
+    console.log("Admin Login:", formData);
   };
 
   return (
-    <section className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-100 via-blue-100 to-pink-100 px-4">
-      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-6">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Login to Your Account
-        </h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 px-4">
+      <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+        
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold text-gray-800 flex items-center justify-center gap-2">
+            <LogIn className="w-6 h-6 text-primary" />
+            Admin Login
+          </h1>
+          <p className="text-gray-500 text-sm mt-2">
+            login to manage your blog dashboard
+          </p>
+        </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email */}
-          <div className="flex items-center border rounded-lg px-3 py-2">
-            <Mail className="w-5 h-5 text-gray-400 mr-2" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full outline-none text-gray-700"
-              required
-            />
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Email Address
+            </label>
+            <div className="relative">
+              <Mail className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                placeholder="admin@example.com"
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none text-gray-700"
+              />
+            </div>
           </div>
 
           {/* Password */}
-          <div className="flex items-center border rounded-lg px-3 py-2">
-            <Lock className="w-5 h-5 text-gray-400 mr-2" />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full outline-none text-gray-700"
-              required
-            />
-            <div
-              className="cursor-pointer text-gray-500 hover:text-gray-700"
-              onClick={() => setShowPassword(!showPassword)}
-            >
-              {showPassword ? <EyeOff /> : <Eye />}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <div className="relative">
+              <Lock className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="••••••••"
+                className="w-full pl-10 pr-10 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none text-gray-700"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
             </div>
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            disabled={loading}
-            className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-purple-500 to-blue-600 text-white font-semibold py-2.5 rounded-lg shadow-md hover:opacity-90 transition disabled:opacity-60"
+            className="w-full bg-primary text-white font-medium py-2 rounded-lg shadow-md hover:bg-primary/90 transition-all duration-300"
           >
-            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : "Login"}
+            Login
           </button>
         </form>
-
-        <p className="text-center text-gray-500 text-sm mt-6">
-          Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-600 hover:underline">
-            Sign Up
-          </a>
-        </p>
-
-        {message && (
-          <div
-            className={`mt-2 text-center text-sm px-3 py-2 rounded-lg font-medium ${
-              message.toLowerCase().includes("welcome") ||
-              message.toLowerCase().includes("success")
-                ? "bg-green-100 text-green-700 border border-green-200"
-                : "bg-red-100 text-red-700 border border-red-200"
-            }`}
-          >
-            {message}
-          </div>
-        )}
       </div>
-    </section>
+    </div>
   );
 }

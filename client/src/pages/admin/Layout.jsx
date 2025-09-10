@@ -2,7 +2,6 @@ import React from "react";
 import logo from "../../assets/globify-logo.png";
 import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../../components/admin/Sidebar";
-import LogoutButton from "../../components/admin/LogoutButton";
 
 function Layout() {
   const navigate = useNavigate();
@@ -27,7 +26,13 @@ function Layout() {
         </div>
 
         {/* Right: Auth button */}
-        <LogoutButton/>
+        <button
+        className="inline-flex items-center justify-center gap-2 px-4 md:px-8 py-2 rounded-full text-md font-medium
+                   bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
+                   transition-all duration-300"
+      >
+        <span>Logout</span>
+      </button>
       </nav>
 
       {/* Content Layout */}

@@ -6,11 +6,9 @@ import Dashboard from "./pages/admin/Dashboard";
 import BlogList from "./pages/admin/BlogList";
 import Comments from "./pages/admin/Comments";
 import AddBlog from "./pages/admin/AddBlog";
-import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import ProtectedRoute from "./components/ProtectedRoute";
 
-import "quill/dist/quill.snow.css"
+import "quill/dist/quill.snow.css";
 
 function App() {
   return (
@@ -20,17 +18,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
 
         {/* Admin Routes */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute>
-              <Layout />
-            </ProtectedRoute>
-          }
-        >
+        <Route path="/admin" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="add-blogs" element={<AddBlog />} />
           <Route path="blog-lists" element={<BlogList />} />
