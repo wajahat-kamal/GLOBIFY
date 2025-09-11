@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import Blog from "../models/blogModel.js"
 
 export const adminLogin = (req, res) => {
   try {
@@ -38,6 +39,23 @@ export const adminLogin = (req, res) => {
     return res.status(500).json({
       success: false,
       message: error.message || "Something went wrong",
+    });
+  }
+};
+
+export const getAllBlogsAdmin = async (req, res) => {
+  try {
+    const blogs = await Blog.find({}).sort({ createdAt: -1 });
+
+    return res.status(200).json({
+      success: true,
+      blogs,
+    });
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch blogs",
     });
   }
 };
