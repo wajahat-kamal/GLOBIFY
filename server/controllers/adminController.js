@@ -107,3 +107,44 @@ export const getDashboard = async (req, res) => {
   }
 };
 
+export const deleteCommentById = async (req, res) => {
+  try {
+    const { id } = req.body;
+    await Comment.findByIdAndDelete(id);
+
+    return res.status(200).json({
+      success: true,
+      message: "Comment deleted successfully",
+    });
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to delete comment",
+    });
+  }
+};
+
+export const approveCommentById = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const updatedComment = await Comment.findByIdAndUpdate(
+      id,
+      { isApproved: true },
+      { new: true }
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Comment approved successfully",
+      comment: updatedComment,
+    });
+  } catch (error) {
+    console.error("Error approving comment:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to approve comment",
+    });
+  }
+};
