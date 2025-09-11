@@ -69,17 +69,11 @@ export const getAllBlogs = async (req, res) => {
   try {
     const blogs = await Blog.find({ isPublished: true });
 
-    if (!blogs || blogs.length === 0) {
-      return res.json({
-        success: false,
-        message: "No published blogs found",
-      });
-    }
-
     return res.status(200).json({
       success: true,
       blogs,
     });
+
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return res.status(500).json({
@@ -155,3 +149,12 @@ export const togglePublish = async (req, res) => {
     });
   }
 };
+
+export const addComment = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
