@@ -1,6 +1,7 @@
 import fs from "fs";
 import imagekit from "../configs/imageKit.js";
 import Blog from "../models/blogModel.js";
+import Comment from "../models/commentModel.js";
 
 export const addBlog = async (req, res) => {
   try {
@@ -73,7 +74,6 @@ export const getAllBlogs = async (req, res) => {
       success: true,
       blogs,
     });
-
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return res.status(500).json({
@@ -139,7 +139,7 @@ export const togglePublish = async (req, res) => {
       success: true,
       message: `Blog has been ${
         blog.isPublished ? "Published" : "Unpublished"
-      }`
+      }`,
     });
   } catch (error) {
     console.error("Error toggling publish status:", error);
@@ -152,9 +152,24 @@ export const togglePublish = async (req, res) => {
 
 export const addComment = async (req, res) => {
   try {
-    
+    const { content, blog, name } = req.body;
+
+    const comment = await Comment.create({
+      name,
+      content,
+      blog,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "Comment added successfully",
+      comment,
+    });
   } catch (error) {
-    console.log(error);
-    
+    console.error("Error adding comment:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to add comment",
+    });
   }
-}
+};
