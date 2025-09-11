@@ -32,11 +32,11 @@ function Header() {
           <input
             type="text"
             placeholder="Search for Blogs"
-            className="w-full pl-4 pr-20 py-3 rounded-md bg-secondary border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 transition"
+            className="w-full pl-4 pr-24 py-3 rounded-lg bg-secondary/90 border border-gray-200 shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition"
           />
           <button
             type="submit"
-            className="absolute right-1 top-1/2 -translate-y-1/2 px-8 py-2 bg-primary text-white font-medium rounded-md shadow hover:scale-103 hover:bg-primary/90 transition"
+            className="absolute right-1.5 top-1/2 -translate-y-1/2 px-5 py-2.5 bg-primary text-white font-medium rounded-md shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition"
           >
             Search
           </button>

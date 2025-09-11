@@ -9,23 +9,23 @@ function BlogCard({ blog }) {
   return (
     <div
       onClick={() => navigate(`/blog/${_id}`)}
-      className="bg-secondary rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col cursor-pointer group"
+      className="bg-secondary rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col cursor-pointer group border border-black/5"
     >
       {/* Image Section */}
       <div className="relative w-full h-44 overflow-hidden">
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col flex-1 p-3">
+      <div className="flex flex-col flex-1 p-4">
         {/* Category */}
-        <span className="text-xs font-medium text-primary bg-indigo-100 px-3 py-1 rounded-full w-fit mb-3">
+        <span className="text-xs font-medium text-primary bg-indigo-100/70 px-3 py-1 rounded-full w-fit mb-3">
           {category}
         </span>
 
@@ -41,7 +41,7 @@ function BlogCard({ blog }) {
 
         {/* Read More */}
         <div className="mt-2">
-          <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-indigo-800 transition-colors duration-300">
+          <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-indigo-700 transition-colors duration-300">
             Read More
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
