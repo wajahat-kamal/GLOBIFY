@@ -64,3 +64,28 @@ export const addBlog = async (req, res) => {
     });
   }
 };
+
+
+export const getAllBlogs = async (req, res) => {
+  try {
+    const blogs = await Blog.find({ isPublished: true }); 
+
+    if (!blogs || blogs.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: "No published blogs found"
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      blogs
+    });
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch blogs"
+    });
+  }
+};
