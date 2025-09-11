@@ -14,10 +14,10 @@ export const addBlog = async (req, res) => {
       });
     }
 
-      // Convert string to boolean
-      if (typeof isPublished === "string") {
-        isPublished = isPublished.toLowerCase() === "true";
-      }
+    // Convert string to boolean
+    if (typeof isPublished === "string") {
+      isPublished = isPublished.toLowerCase() === "true";
+    }
 
     if (!imageFile) {
       return res.status(400).json({
@@ -65,37 +65,51 @@ export const addBlog = async (req, res) => {
   }
 };
 
-
 export const getAllBlogs = async (req, res) => {
   try {
-    const blogs = await Blog.find({ isPublished: true }); 
+    const blogs = await Blog.find({ isPublished: true });
 
     if (!blogs || blogs.length === 0) {
       return res.status(404).json({
         success: false,
-        message: "No published blogs found"
+        message: "No published blogs found",
       });
     }
 
     return res.status(200).json({
       success: true,
-      blogs
+      blogs,
     });
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return res.status(500).json({
       success: false,
-      message: "Failed to fetch blogs"
+      message: "Failed to fetch blogs",
     });
   }
 };
 
-
 export const getBlogById = async (req, res) => {
   try {
-    
+    const { blogId } = req.params;
+    const blog = await Blog.findById(blogId);
+
+    if (!blog) {
+      return res.status(404).json({
+        success: false,
+        message: "Blog not found",
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      blog,
+    });
   } catch (error) {
-    console.log(error);
-    
+    console.error("Error fetching blog by ID:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch blog",
+    });
   }
-}
+};
