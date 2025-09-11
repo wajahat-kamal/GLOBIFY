@@ -89,3 +89,13 @@ export const getAllBlogs = async (req, res) => {
     });
   }
 };
+
+
+export const getBlogById = async (req, res) => {
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
