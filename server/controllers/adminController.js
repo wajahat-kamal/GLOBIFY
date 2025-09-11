@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import Blog from "../models/blogModel.js"
+import Comment from "../models/commentModel.js"
+
 
 export const adminLogin = (req, res) => {
   try {
@@ -56,6 +58,25 @@ export const getAllBlogsAdmin = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to fetch blogs",
+    });
+  }
+};
+
+export const getAllComments = async (req, res) => {
+  try {
+    const comments = await Comment.find({})
+      .populate("Blog") 
+      .sort({ createdAt: -1 });
+
+    res.json({
+      success: true,
+      comments
+    });
+  } catch (error) {
+    console.log("Error fetching comments:", error);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch comments"
     });
   }
 };
