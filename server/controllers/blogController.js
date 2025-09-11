@@ -91,7 +91,7 @@ export const getAllBlogs = async (req, res) => {
 
 export const getBlogById = async (req, res) => {
   try {
-    const { blogId } = req.params;
+    const { blogId } = req.parse;
     const blog = await Blog.findById(blogId);
 
     if (!blog) {
@@ -114,21 +114,44 @@ export const getBlogById = async (req, res) => {
   }
 };
 
-export const deleteBlog = async (req, res) => {
+export const deleteBlogById = async (req, res) => {
   try {
-    const { id } = req.params; 
+    const { id } = req.body;
 
     await Blog.findByIdAndDelete(id);
 
     return res.status(200).json({
       success: true,
-      message: "Blog deleted successfully"
+      message: "Blog deleted successfully",
     });
   } catch (error) {
     console.error("Error deleting blog:", error);
     return res.status(500).json({
       success: false,
-      message: "Failed to delete blog"
+      message: "Failed to delete blog",
+    });
+  }
+};
+
+export const togglePublish = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    const blog = await Blog.findById(id);
+    blog.isPublished = !blog.isPublished;
+    await blog.save();
+
+    return res.status(200).json({
+      success: true,
+      message: `Blog has been ${
+        blog.isPublished ? "Published" : "Unpublished"
+      }`
+    });
+  } catch (error) {
+    console.error("Error toggling publish status:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Failed to update blog status",
     });
   }
 };
