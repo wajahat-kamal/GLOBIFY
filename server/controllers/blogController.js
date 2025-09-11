@@ -70,7 +70,7 @@ export const getAllBlogs = async (req, res) => {
     const blogs = await Blog.find({ isPublished: true });
 
     if (!blogs || blogs.length === 0) {
-      return res.status(404).json({
+      return res.json({
         success: false,
         message: "No published blogs found",
       });
@@ -91,7 +91,7 @@ export const getAllBlogs = async (req, res) => {
 
 export const getBlogById = async (req, res) => {
   try {
-    const { blogId } = req.parse;
+    const { blogId } = req.params;
     const blog = await Blog.findById(blogId);
 
     if (!blog) {
