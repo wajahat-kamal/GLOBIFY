@@ -3,40 +3,38 @@ import React from "react";
 
 function Header() {
   return (
-    <section className="flex items-center justify-center pt-42 px-4">
-      <div className="flex flex-col items-center justify-center text-center gap-2 max-w-3xl w-full">
+    <section className="flex items-center justify-center pt-32 sm:pt-40 px-4">
+      <div className="text-center max-w-3xl w-full">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-6 py-1 rounded-full bg-secondary border border-primary/50 shadow-sm hover:shadow-md transition-all duration-300 cursor-default">
-          <p className="text-sm font-medium text-indigo-600">
-            New: AI feature integrated
-          </p>
-          <Sparkles className="h-4 w-4 text-indigo-600 animate-pulse" />
+        <div className="inline-flex items-center justify-center gap-3 px-6 py-1.5 mb-6 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary">
+          <p className="font-medium">New: AI feature integrated</p>
+          <Sparkles className="h-4 w-4 text-primary animate-pulse" />
         </div>
 
         {/* Heading */}
-        <h1 className="text-4xl md:text-6xl font-semibold text-[#364153] leading-tight">
-          Your own <span className="text-indigo-600">blogging</span>{" "}
-          <br className="hidden md:block" />
+        <h1 className="text-4xl sm:text-6xl font-bold sm:leading-[1.2] text-gray-800">
+          Your own <span className="text-primary">blogging</span> <br className="hidden sm:block" />
           platform.
         </h1>
 
         {/* Subtext */}
-        <p className="text-base max-sm:text-xs text-[#6B7280] max-w-2xl">
+        <p className="my-6 sm:my-8 max-w-2xl mx-auto text-gray-600 text-sm sm:text-base">
           This is your space to think out loud, to share what matters, and to
           write without filters. Whether it's one word or a thousand, your story
           starts right here.
         </p>
 
-        {/* Search Form */}
-        <form className="relative w-full max-w-lg mt-8">
+        {/* Search form */}
+        <form className="flex max-w-lg mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary transition">
           <input
             type="text"
-            placeholder="Search for Blogs"
-            className="w-full pl-4 pr-24 py-3 rounded-lg bg-secondary/90 border border-gray-200 shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition"
+            placeholder="Search for blogs"
+            required
+            className="w-full px-4 py-2 outline-none text-gray-700 text-sm sm:text-base"
           />
           <button
             type="submit"
-            className="absolute right-1.5 top-1/2 -translate-y-1/2 px-5 py-2.5 bg-primary text-white font-medium rounded-md shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 transition"
+            className="bg-primary text-white px-6 sm:px-8 py-2 sm:py-2.5 hover:scale-105 active:scale-100 transition-transform duration-200"
           >
             Search
           </button>

@@ -7,9 +7,9 @@ function BlogList() {
   const blogCategory = ["All", "Technology", "Startup", "Lifestyle"];
 
   return (
-    <section className="w-full px-4 md:px-10 py-6 pt-8">
+    <section className="w-full px-4 md:px-10 py-6 ">
       {/* Category Buttons */}
-      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2 mb-6">
+      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2">
         {blogCategory.map((item) => (
           <button
             key={item}
@@ -27,7 +27,7 @@ function BlogList() {
         ))}
       </div>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
         {blogsData
           .filter((blog) => (menu === "All" ? true : blog.category === menu))
           .map((blog) => (
