@@ -27,7 +27,7 @@ function BlogList() {
         ))}
       </div>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4 md:p-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-24 mx-8 sm:mx-20">
         {blogsData
           .filter((blog) => (menu === "All" ? true : blog.category === menu))
           .map((blog) => (
