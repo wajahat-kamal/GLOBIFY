@@ -10,8 +10,12 @@ import Login from "./pages/Login";
 
 import { Toaster } from "react-hot-toast"
 import "quill/dist/quill.snow.css";
+import { UseAppContext } from "./context/AppContext";
 
 function App() {
+
+  const {token} = UseAppContext();
+
   return (
     <div>
       <Toaster/>
@@ -19,10 +23,9 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
-        <Route path="/login" element={<Login />} />
 
         {/* Admin Routes */}
-        <Route path="/admin" element={<Layout />}>
+        <Route path="/admin" element={token ? <Layout /> : <Login/>}>
           <Route index element={<Dashboard />} />
           <Route path="add-blogs" element={<AddBlog />} />
           <Route path="blog-lists" element={<BlogList />} />
