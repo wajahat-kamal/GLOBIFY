@@ -12,7 +12,7 @@ function BlogCard({ blog }) {
       className="max-w-sm w-full bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer group"
     >
       {/* Image */}
-      <div className="relative w-full h-44 overflow-hidden">
+      <div className="relative w-full h-40 overflow-hidden">
         <img
           src={image}
           alt={title}
@@ -30,12 +30,12 @@ function BlogCard({ blog }) {
         </span>
 
         {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-semibold text-gray-800 line-clamp-2 group-hover:text-primary transition-colors">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 line-clamp-2 mb-2">
+        <p className="text-sm text-gray-600 line-clamp-2 my-2">
           {description}
         </p>
 
