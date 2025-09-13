@@ -6,9 +6,16 @@ function Header() {
   const { setInput, input } = UseAppContext();
   const inputRef = useRef();
 
+  // Handle Search submit
   const submitHandler = (e) => {
     e.preventDefault();
     setInput(inputRef.current.value);
+  };
+
+  // Clear search manually
+  const onClear = () => {
+    setInput("");
+    inputRef.current.value = "";
   };
 
   return (
@@ -53,6 +60,17 @@ function Header() {
             Search
           </button>
         </form>
+
+        {input && (
+          <div className="mt-2">
+            <button
+              onClick={onClear}
+              className="bg-primary text-white text-sm px-6 py-2 m-1 rounded-lg hover:scale-105 transition-all cursor-pointer"
+            >
+              Clear Search
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
