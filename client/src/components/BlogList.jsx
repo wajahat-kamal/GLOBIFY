@@ -9,7 +9,7 @@ function BlogList() {
   return (
     <section className="w-full px-4 md:px-10 py-6 ">
       {/* Category Buttons */}
-      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2">
+      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2 mb-6">
         {blogCategory.map((item) => (
           <button
             key={item}
