@@ -9,42 +9,40 @@ function BlogCard({ blog }) {
   return (
     <div
       onClick={() => navigate(`/blog/${_id}`)}
-      className="bg-secondary rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col cursor-pointer group border border-black/5"
+      className="max-w-sm w-full bg-white rounded-xl border border-gray-100 shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden cursor-pointer group"
     >
-      {/* Image Section */}
+      {/* Image */}
       <div className="relative w-full h-44 overflow-hidden">
         <img
           src={image}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        {/* subtle gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
       </div>
 
-      {/* Content Section */}
-      <div className="flex flex-col flex-1 p-4">
+      {/* Content */}
+      <div className="p-3 flex flex-col">
         {/* Category */}
-        <span className="text-xs font-medium text-primary bg-indigo-100/70 px-3 py-1 rounded-full w-fit mb-3">
+        <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full w-fit mb-2">
           {category}
         </span>
 
         {/* Title */}
-        <h4 className="text-xl font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-primary transition-colors">
           {title}
-        </h4>
+        </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 flex-1 line-clamp-3 leading-relaxed">
+        <p className="text-sm text-gray-600 line-clamp-2 mb-2">
           {description}
         </p>
 
         {/* Read More */}
-        <div className="mt-2">
-          <button className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-indigo-700 transition-colors duration-300">
-            Read More
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+        <div className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
+          Read More
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </div>
       </div>
     </div>
