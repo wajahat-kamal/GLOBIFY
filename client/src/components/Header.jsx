@@ -1,7 +1,16 @@
 import { Sparkles } from "lucide-react";
-import React from "react";
+import React, { useRef } from "react";
+import { UseAppContext } from "../context/AppContext";
 
 function Header() {
+  const { setInput, input } = UseAppContext();
+  const inputRef = useRef();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setInput(inputRef.current.value);
+  };
+
   return (
     <section className="flex items-center justify-center pt-41 px-4">
       <div className="text-center max-w-3xl w-full">
@@ -13,7 +22,8 @@ function Header() {
 
         {/* Heading */}
         <h1 className="text-4xl sm:text-6xl font-bold sm:leading-[1.2] text-gray-800">
-          Your own <span className="text-primary">blogging</span> <br className="hidden sm:block" />
+          Your own <span className="text-primary">blogging</span>{" "}
+          <br className="hidden sm:block" />
           platform.
         </h1>
 
@@ -25,16 +35,20 @@ function Header() {
         </p>
 
         {/* Search form */}
-        <form className="flex max-w-lg mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-primary transition">
+        <form
+          onSubmit={submitHandler}
+          className="flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden"
+        >
           <input
-            type="text"
             placeholder="Search for blogs"
             required
-            className="w-full px-4 py-2 outline-none text-gray-700 text-sm sm:text-base"
+            ref={inputRef}
+            className="w-full pl-4 outline-none"
+            type="text"
           />
           <button
             type="submit"
-            className="bg-primary text-white px-6 sm:px-8 py-2 sm:py-2.5 hover:scale-105 active:scale-100 transition-transform duration-200"
+            className="bg-primary text-white px-8 py-2 m-1 rounded-lg hover:scale-105 transition-all cursor-pointer"
           >
             Search
           </button>
