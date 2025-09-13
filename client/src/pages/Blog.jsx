@@ -6,9 +6,13 @@ import Footer from "../components/Footer";
 import Moment from "moment";
 import Avatar from "../assets/user-avatar.png"; 
 import Loader from "../components/Loader";
+import { UseAppContext } from "../context/AppContext";
+import toast from "react-hot-toast";
 
 function Blog() {
   const { id } = useParams();
+
+  const {axios} = UseAppContext();
 
   const [data, setData] = useState(null);
   const [comments, setComments] = useState([]);
@@ -16,13 +20,21 @@ function Blog() {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
-  const fetchBlogData = () => {
-    const blog = blogsData.find((item) => item._id === id);
-    setData(blog);
-  };
+  const fetchBlogData = async () => {
+     try {
+      const {data} = await axios.get(`/api/blog/${id}`)
+      data.success ? setData(data.blog) : toast.error(data.message)
+     } catch (error) {
+      toast.error(error.message)
+     }
+   };
 
-  const fetchComments = () => {
-    setComments(commentsData);
+  const fetchComments = async () => {
+    try {
+      
+    } catch (error) {
+      toast.error(error)
+    }
   };
 
   useEffect(() => {
