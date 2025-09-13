@@ -6,7 +6,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import BlogList from "./pages/admin/BlogList";
 import Comments from "./pages/admin/Comments";
 import AddBlog from "./pages/admin/AddBlog";
-import Login from "./pages/Login";
+import Login from "./components/admin/Login";
 
 import { Toaster } from "react-hot-toast"
 import "quill/dist/quill.snow.css";
