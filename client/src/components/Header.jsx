@@ -3,7 +3,7 @@ import React from "react";
 
 function Header() {
   return (
-    <section className="flex items-center justify-center pt-32 sm:pt-40 px-4">
+    <section className="flex items-center justify-center pt-41 px-4">
       <div className="text-center max-w-3xl w-full">
         {/* Badge */}
         <div className="inline-flex items-center justify-center gap-3 px-6 py-1.5 mb-6 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary">
