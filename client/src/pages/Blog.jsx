@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { blogsData, commentsData } from "../assets/blogsData";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Moment from "moment";
@@ -11,8 +10,7 @@ import toast from "react-hot-toast";
 
 function Blog() {
   const { id } = useParams();
-
-  const {axios} = UseAppContext();
+  const { axios } = UseAppContext();
 
   const [data, setData] = useState(null);
   const [comments, setComments] = useState([]);
@@ -20,20 +18,46 @@ function Blog() {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
+  // ✅ Fetch blog
   const fetchBlogData = async () => {
-     try {
-      const {data} = await axios.get(`/api/blog/${id}`)
-      data.success ? setData(data.blog) : toast.error(data.message)
-     } catch (error) {
-      toast.error(error.message)
-     }
-   };
+    try {
+      const { data } = await axios.get(`/api/blog/${id}`);
+      data.success ? setData(data.blog) : toast.error(data.message);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
+  // ✅ Fetch comments
   const fetchComments = async () => {
     try {
-      
+      const { data } = await axios.post("/api/blog/comments", { blogId: id });
+      data.success ? setComments(data.comments) : toast.error(data.message);
     } catch (error) {
-      toast.error(error)
+      toast.error(error.message);
+    }
+  };
+
+  // ✅ Add comment
+  const addComment = async (e) => {
+    e.preventDefault(); // <--- FIX: e passed in
+    try {
+      const { data } = await axios.post("/api/blog/add-comment", {
+        blogId: id,
+        content,
+        name,
+      });
+
+      if (data.success) {
+        toast.success(data.message);
+        setName("");
+        setContent("");
+        fetchComments(); // ✅ Refresh comments instantly
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
 
@@ -44,10 +68,8 @@ function Blog() {
 
   return data ? (
     <div className="min-h-screen text-gray-900">
-      {/* Navbar */}
       <Navbar />
 
-      {/* Blog Section */}
       <article className="max-w-4xl mt-10 mx-auto px-6 py-12">
         {/* Blog Image */}
         <div className="mb-8">
@@ -78,7 +100,7 @@ function Blog() {
           {data.title}
         </h1>
 
-        {/* Description / Body */}
+        {/* Description */}
         <p className="text-lg leading-relaxed text-gray-700">
           {data.description}
         </p>
@@ -136,7 +158,8 @@ function Blog() {
               Add Your Comment
             </h2>
 
-            <form className="space-y-5">
+            {/* ✅ Form now submits addComment */}
+            <form className="space-y-5" onSubmit={addComment}>
               <input
                 type="text"
                 onChange={(e) => setName(e.target.value)}
@@ -153,7 +176,7 @@ function Blog() {
               />
               <button
                 type="submit"
-                className="w-full  px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition shadow-sm"
+                className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition shadow-sm"
               >
                 Add Comment
               </button>
@@ -164,7 +187,9 @@ function Blog() {
 
       <Footer />
     </div>
-  ) : <Loader />
+  ) : (
+    <Loader />
+  );
 }
 
 export default Blog;

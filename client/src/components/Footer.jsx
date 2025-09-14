@@ -21,7 +21,7 @@ function Footer() {
           <h3 className="text-lg font-semibold text-primary mb-2">
             Quick Links
           </h3>
-          <ul className="space-y-2 text-sm text-right">
+          <ul className="space-y-2 text-sm text-left md:text-right">
             <li>
               <a
                 href="/"
