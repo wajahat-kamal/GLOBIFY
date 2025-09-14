@@ -44,13 +44,19 @@ function BlogList() {
         ))}
       </div>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-24 px-6 sm:px-8 lg:px-20 max-w-7xl mx-auto">
+      <section className="max-w-7xl mx-auto mb-24 px-6 sm:px-8 lg:px-20">
         {visibleBlogs.length === 0 ? (
-          <p className="my-10 sm:my-12 max-w-md mx-auto text-center text-gray-500 text-base sm:text-lg font-medium tracking-wide leading-relaxed">
-            🚫 No blogs found. Please try a different search.
-          </p>
+          <div className="flex flex-col items-center justify-center w-full py-16">
+            <p className="max-w-md text-center text-gray-500 text-base sm:text-lg font-medium tracking-wide leading-relaxed">
+              🚫 No blogs found. Please try a different search.
+            </p>
+          </div>
         ) : (
-          visibleBlogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+            {visibleBlogs.map((blog) => (
+              <BlogCard key={blog._id} blog={blog} />
+            ))}
+          </div>
         )}
       </section>
     </section>
