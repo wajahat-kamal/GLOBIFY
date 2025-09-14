@@ -28,33 +28,32 @@ function AddBlogs() {
     if (file) setImage(file);
   };
 
-  const generateContent = () => {};
+  const generateContent = () => {
+    // optional: AI content generator
+  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     setIsAdding(true);
-  
+
     try {
-      const blog = {
-        title,
-        category,
-        isPublished,
-        description: quillRef.current.root.innerHTML,
-      };
-  
       const formData = new FormData();
-      formData.append("blog", JSON.stringify(blog)); 
-      formData.append("image", image); 
-  
+      formData.append("title", title);
+      formData.append("description", quillRef.current.root.innerHTML);
+      formData.append("category", category);
+      formData.append("isPublished", isPublished);
+      formData.append("image", image);
+
       const { data } = await axios.post("/api/blog/add", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-  
+
       if (data.success) {
         toast.success(data.message);
-        setImage(null);        
+        setImage(null);
         setTitle("");
         setCategory("Startup");
+        setIsPublished(false);
         quillRef.current.root.innerHTML = "";
       } else {
         toast.error(data.message || "Something went wrong");
@@ -65,10 +64,12 @@ function AddBlogs() {
       setIsAdding(false);
     }
   };
-  
 
   return (
-    <form onSubmit={onSubmitHandler} className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6">
+    <form
+      onSubmit={onSubmitHandler}
+      className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6"
+    >
       <div>
         <p className="text-sm font-medium text-gray-600 mb-2">
           Upload Thumbnail
@@ -125,7 +126,6 @@ function AddBlogs() {
         <div className="relative h-60 rounded-lg border border-gray-300 bg-white shadow-sm overflow-y-auto overflow-x-hidden focus-within:ring-2 focus-within:ring-primary">
           <div ref={editorRef} className="h-full"></div>
 
-          {/* Floating Button */}
           <button
             type="button"
             onClick={generateContent}
@@ -156,7 +156,6 @@ function AddBlogs() {
             <option value="Lifestyle">Lifestyle</option>
           </select>
 
-          {/* Custom Dropdown Arrow */}
           <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
             <svg
               className="w-4 h-4 text-gray-500"
@@ -165,11 +164,7 @@ function AddBlogs() {
               strokeWidth="2"
               viewBox="0 0 24 24"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
           </div>
         </div>
@@ -193,11 +188,11 @@ function AddBlogs() {
         type="submit"
         disabled={isAdding}
         className={`w-full max-w-lg flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-medium shadow transition-all
-    ${
-      isAdding
-        ? "bg-primary/70 text-white cursor-not-allowed"
-        : "bg-primary text-white hover:bg-primary/90 hover:shadow-md"
-    }`}
+          ${
+            isAdding
+              ? "bg-primary/70 text-white cursor-not-allowed"
+              : "bg-primary text-white hover:bg-primary/90 hover:shadow-md"
+          }`}
       >
         <PlusCircle className="w-5 h-5" />
         {isAdding ? "Adding..." : "Add Blog"}

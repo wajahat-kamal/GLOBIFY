@@ -24,9 +24,7 @@ export const adminLogin = (req, res) => {
     }
 
     // Generate JWT
-    const token = jwt.sign({ email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ email }, process.env.JWT_SECRET);
 
     return res.status(200).json({
       success: true,
