@@ -12,12 +12,16 @@ function BlogList() {
     if (input === "") {
       return blogs;
     }
-    return blogs.filter((blog) =>
-      blog.title.toLowerCase().includes(input.toLowerCase()) ||
-      blog.category.toLowerCase().includes(input.toLowerCase())
+    return blogs.filter(
+      (blog) =>
+        blog.title.toLowerCase().includes(input.toLowerCase()) ||
+        blog.category.toLowerCase().includes(input.toLowerCase())
     );
   };
-  
+
+  const visibleBlogs = filteredBlogs().filter(
+    (blog) => menu === "All" || blog.category === menu
+  );
 
   return (
     <section className="w-full px-4 md:px-10 pt-8">
@@ -41,11 +45,13 @@ function BlogList() {
       </div>
 
       <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-24 px-6 sm:px-8 lg:px-20 max-w-7xl mx-auto">
-        {filteredBlogs()
-          .filter((blog) => (menu === "All" ? true : blog.category === menu))
-          .map((blog) => (
-            <BlogCard key={blog._id} blog={blog} />
-          ))}
+        {visibleBlogs.length === 0 ? (
+          <p className="my-10 sm:my-12 max-w-md mx-auto text-center text-gray-500 text-base sm:text-lg font-medium tracking-wide leading-relaxed">
+            🚫 No blogs found. Please try a different search.
+          </p>
+        ) : (
+          visibleBlogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
+        )}
       </section>
     </section>
   );
