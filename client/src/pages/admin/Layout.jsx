@@ -7,7 +7,7 @@ function Layout() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col ">
+    <div className="h-[100dvh] overflow-hidden flex flex-col ">
       {/* Top Navbar */}
       <nav className="bg-secondary border-b border-gray-200 shadow-sm flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
         {/* Left: Logo + Brand */}
@@ -41,7 +41,7 @@ function Layout() {
         <Sidebar />
 
         {/* Main Page Content */}
-        <main className="flex-1 p-4 md:p-6 overflow-y-auto">
+        <main className="flex-1 h-[90dvh] p-4 md:p-6 overflow-y-auto">
           <Outlet />
         </main>
       </div>

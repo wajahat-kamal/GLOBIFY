@@ -2,8 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { PlusCircle } from "lucide-react";
 import uploadImage from "../../assets/uploadImage.svg";
 import Quill from "quill";
+import { UseAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 function AddBlogs() {
+  const { axios } = UseAppContext();
+  const [isAdding, setIsAdding] = useState(false);
+
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Startup");
@@ -25,9 +30,45 @@ function AddBlogs() {
 
   const generateContent = () => {};
 
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setIsAdding(true);
+  
+    try {
+      const blog = {
+        title,
+        category,
+        isPublished,
+        description: quillRef.current.root.innerHTML,
+      };
+  
+      const formData = new FormData();
+      formData.append("blog", JSON.stringify(blog)); 
+      formData.append("image", image); 
+  
+      const { data } = await axios.post("/api/blog/add", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+  
+      if (data.success) {
+        toast.success(data.message);
+        setImage(null);        
+        setTitle("");
+        setCategory("Startup");
+        quillRef.current.root.innerHTML = "";
+      } else {
+        toast.error(data.message || "Something went wrong");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || error.message);
+    } finally {
+      setIsAdding(false);
+    }
+  };
+  
+
   return (
-    <form className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6">
-      {/* Thumbnail Upload */}
+    <form onSubmit={onSubmitHandler} className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6">
       <div>
         <p className="text-sm font-medium text-gray-600 mb-2">
           Upload Thumbnail
@@ -55,7 +96,6 @@ function AddBlogs() {
         </label>
       </div>
 
-      {/* Title Input */}
       <div>
         <label
           htmlFor="title"
@@ -74,7 +114,6 @@ function AddBlogs() {
         />
       </div>
 
-      {/* Blog Description */}
       <div className="relative w-full max-w-lg">
         <label
           htmlFor="description"
@@ -97,7 +136,6 @@ function AddBlogs() {
         </div>
       </div>
 
-      {/* Category Select */}
       <div>
         <label
           htmlFor="category"
@@ -137,7 +175,6 @@ function AddBlogs() {
         </div>
       </div>
 
-      {/* Publish Toggle */}
       <div className="flex items-center gap-3 mt-4">
         <p className="text-sm font-medium text-gray-600">Publish Now</p>
         <label className="relative inline-flex items-center cursor-pointer">
@@ -154,10 +191,16 @@ function AddBlogs() {
 
       <button
         type="submit"
-        className="w-full max-w-lg flex items-center justify-center gap-2 bg-primary text-white font-medium px-5 py-2.5 rounded-lg shadow hover:bg-primary/90 hover:shadow-md transition-all"
+        disabled={isAdding}
+        className={`w-full max-w-lg flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 font-medium shadow transition-all
+    ${
+      isAdding
+        ? "bg-primary/70 text-white cursor-not-allowed"
+        : "bg-primary text-white hover:bg-primary/90 hover:shadow-md"
+    }`}
       >
         <PlusCircle className="w-5 h-5" />
-        Add Blog
+        {isAdding ? "Adding..." : "Add Blog"}
       </button>
     </form>
   );
