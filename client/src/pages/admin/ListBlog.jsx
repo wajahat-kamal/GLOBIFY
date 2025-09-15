@@ -3,7 +3,7 @@ import { dashboardBlogsData } from "../../assets/blogsData";
 import BlogTableItem from "../../components/admin/BlogTableItem";
 import { FileText } from "lucide-react";
 
-function BlogLists() {
+function ListBlog() {
   const [blogs, setBlogs] = useState([]);
 
   const fetchBlogs = async () => {
@@ -60,4 +60,4 @@ function BlogLists() {
   );
 }
 
-export default BlogLists;
+export default ListBlog;
