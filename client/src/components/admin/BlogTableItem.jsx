@@ -7,23 +7,25 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
   const { title, createdAt, isPublished } = blog;
   const BlogDate = new Date(createdAt);
 
-  const {axios} = UseAppContext();
+  const { axios } = UseAppContext();
 
   const deleteBlog = async () => {
-    const confirm = window.confirm("Are you sure you want to delete this blog.")
+    const confirm = window.confirm(
+      "Are you sure you want to delete this blog."
+    );
     if (!confirm) return;
     try {
-      const {data} = await axios.post("/api/blog/delete", {id: blog._id})
+      const { data } = await axios.post("/api/blog/delete", { id: blog._id });
       if (data.success) {
-        toast.success(data.message)
-         await fetchBlogs();
-      }else{ 
-        toast.error(data.message)
+        toast.success(data.message);
+        await fetchBlogs();
+      } else {
+        toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
-  }
+  };
 
   return (
     <tr className="border-b border-gray-400 hover:bg-gray-50 transition-colors">
@@ -116,7 +118,6 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
           <X className="w-4 h-4" />
         </button>
       </td>
-
     </tr>
   );
 }
