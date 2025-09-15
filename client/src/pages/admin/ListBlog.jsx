@@ -11,7 +11,6 @@ function ListBlog() {
   const {axios } = UseAppContext();
 
   const fetchBlogs = async () => {
-    // setBlogs(dashboardBlogsData.recentBlogs);
     try {
       const {data} = await axios.get("/api/admin/blogs")
       if (data.success) {

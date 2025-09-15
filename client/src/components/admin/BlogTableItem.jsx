@@ -1,9 +1,29 @@
 import { X } from "lucide-react";
 import React from "react";
+import { UseAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 function BlogTableItem({ blog, fetchBlogs, index }) {
   const { title, createdAt, isPublished } = blog;
   const BlogDate = new Date(createdAt);
+
+  const {axios} = UseAppContext();
+
+  const deleteBlog = async () => {
+    const confirm = window.confirm("Are you sure you want to delete this blog.")
+    if (!confirm) return;
+    try {
+      const {data} = await axios.post("/api/blog/delete", {id: blog._id})
+      if (data.success) {
+        toast.success(data.message)
+         await fetchBlogs();
+      }else{ 
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   return (
     <tr className="border-b border-gray-400 hover:bg-gray-50 transition-colors">
