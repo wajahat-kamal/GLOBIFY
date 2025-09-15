@@ -73,7 +73,7 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
               {isPublished ? "Unpublish" : "Publish"}
             </button>
 
-            <button className="p-1.5 rounded-full border border-red-200 text-red-500 hover:bg-red-50 transition-colors">
+            <button className="p-1.5 rounded-full border border-red-300 text-red-500 hover:bg-red-300 transition-colors">
               <X className="w-4 h-4" />
             </button>
           </div>
