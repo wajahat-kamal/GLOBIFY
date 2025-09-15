@@ -36,7 +36,7 @@ function BlogCard({ blog }) {
 
         {/* Description */}
         <p
-          className="text-s`m text-gray-600 my-2"
+          className="text-sm text-gray-600 my-2"
           dangerouslySetInnerHTML={{ __html: description.slice(0, 75) + "..." }}
         ></p>
 
