@@ -35,9 +35,10 @@ function BlogCard({ blog }) {
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 line-clamp-2 my-2">
-          {description}
-        </p>
+        <p
+          className="text-s`m text-gray-600 my-2"
+          dangerouslySetInnerHTML={{ __html: description.slice(0, 75) + "..." }}
+        ></p>
 
         {/* Read More */}
         <div className="flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors">
