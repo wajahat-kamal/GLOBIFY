@@ -8,18 +8,18 @@ import toast from "react-hot-toast";
 function ListBlog() {
   const [blogs, setBlogs] = useState([]);
 
-  const {axios } = UseAppContext();
+  const { axios } = UseAppContext();
 
   const fetchBlogs = async () => {
     try {
-      const {data} = await axios.get("/api/admin/blogs")
+      const { data } = await axios.get("/api/admin/blogs");
       if (data.success) {
-        setBlogs(data.blogs)
+        setBlogs(data.blogs);
       } else {
-      toast.error(data.message)
+        toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
@@ -42,33 +42,33 @@ function ListBlog() {
 
       {/* Table */}
       <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[250px]">
-            {/* Table Head */}
-            <thead className="hidden md:table-header-group">
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-700">
-                <th className="py-3 px-4 text-sm font-semibold">#</th>
-                <th className="py-3 px-4 text-sm font-semibold">Blog Title</th>
-                <th className="py-3 px-4 text-sm font-semibold">Date</th>
-                <th className="py-3 px-4 text-sm font-semibold">Status</th>
-                <th className="py-3 px-4 text-sm font-semibold text-center">
-                  Action
-                </th>
-              </tr>
-            </thead>
+        <table className="w-full text-left border-collapse min-w-[250px]">
+          {/* Table Head */}
+          <thead className="hidden md:table-header-group">
+            <tr className="bg-gray-50 border-b border-gray-200 text-gray-700">
+              <th className="py-3 px-4 text-sm font-semibold">#</th>
+              <th className="py-3 px-4 text-sm font-semibold">Blog Title</th>
+              <th className="py-3 px-4 text-sm font-semibold">Date</th>
+              <th className="py-3 px-4 text-sm font-semibold">Status</th>
+              <th className="py-3 px-4 text-sm font-semibold text-center">
+                Action
+              </th>
+            </tr>
+          </thead>
 
-            {/* Table Body */}
-            <tbody>
-              {blogs.map((blog, index) => (
-                <BlogTableItem
-                  key={blog.id}
-                  fetchBlogs={fetchBlogs}
-                  index={index + 1}
-                  blog={blog}
-                />
-              ))}
-            </tbody>
-          </table>
-        </div>
+          {/* Table Body */}
+          <tbody>
+            {blogs.map((blog, index) => (
+              <BlogTableItem
+                key={blog.id}
+                fetchBlogs={fetchBlogs}
+                index={index + 1}
+                blog={blog}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
