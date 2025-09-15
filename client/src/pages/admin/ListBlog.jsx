@@ -2,12 +2,26 @@ import React, { useEffect, useState } from "react";
 import { dashboardBlogsData } from "../../assets/blogsData";
 import BlogTableItem from "../../components/admin/BlogTableItem";
 import { FileText } from "lucide-react";
+import { UseAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 function ListBlog() {
   const [blogs, setBlogs] = useState([]);
 
+  const {axios } = UseAppContext();
+
   const fetchBlogs = async () => {
-    setBlogs(dashboardBlogsData.recentBlogs);
+    // setBlogs(dashboardBlogsData.recentBlogs);
+    try {
+      const {data} = await axios.get("/api/admin/blogs")
+      if (data.success) {
+        setBlogs(data.blogs)
+      } else {
+      toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   };
 
   useEffect(() => {
