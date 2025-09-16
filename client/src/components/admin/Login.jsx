@@ -7,7 +7,7 @@ export default function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
-  const {axios, setToken} = UseAppContext();
+  const {axios, setToken, navigate} = UseAppContext();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,10 +39,10 @@ export default function Login() {
         
         {/* Header */}
         <div className="text-center mb-8 flex">
-          <div >
+          <div onClick={() => navigate("/")}>
             <ArrowLeft/>
           </div>
-          <div className="text-center">
+          <div className="text-center w-full">
           <h1 className="text-2xl font-bold text-gray-800">
             <span className="text-primary">Admin</span> Login
           </h1>
