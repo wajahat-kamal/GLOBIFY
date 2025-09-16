@@ -48,7 +48,7 @@ function BlogList() {
         {visibleBlogs.length === 0 ? (
           <div className="flex flex-col items-center justify-center w-full py-16">
             <p className="max-w-md text-center text-gray-500 text-base sm:text-lg font-medium tracking-wide leading-relaxed">
-              🚫 No blogs found. Please try a different search.
+              🚫 No blogs found. Please try again.
             </p>
           </div>
         ) : (

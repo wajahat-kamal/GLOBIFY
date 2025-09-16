@@ -119,11 +119,11 @@ function Blog() {
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <img
+                      {/* <img
                         src={Avatar}
                         alt="User avatar"
                         className="w-8 h-8 rounded-full border border-gray-200 object-cover"
-                      />
+                      /> */}
                       <h3 className="text-base font-semibold text-gray-800">
                         {comment.name}
                       </h3>
@@ -155,7 +155,6 @@ function Blog() {
               Add Your Comment
             </h2>
 
-            {/* ✅ Form now submits addComment */}
             <form className="space-y-5" onSubmit={addComment}>
               <input
                 type="text"

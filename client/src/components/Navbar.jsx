@@ -11,7 +11,7 @@ export default function Navbar() {
       <nav className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-22 flex items-center justify-between h-16 md:h-20">
 
         <div
-          className="flex items-center gap-2 cursor-pointer"
+          className="flex items-center gap-1 md:gap-2 cursor-pointer"
           onClick={() => navigate("/")}
         >
           <img

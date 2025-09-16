@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, LogIn } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, LogIn, ArrowBigLeft, ArrowLeft } from "lucide-react";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 
@@ -38,13 +38,18 @@ export default function Login() {
       <div className="w-full max-w-md bg-white shadow-2xl rounded-2xl p-8 border border-gray-100">
         
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 flex">
+          <div >
+            <ArrowLeft/>
+          </div>
+          <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800">
             <span className="text-primary">Admin</span> Login
           </h1>
           <p className="text-sm text-gray-500 mt-2">
             login to manage your blog dashboard
           </p>
+          </div>
         </div>
 
         {/* Form */}
