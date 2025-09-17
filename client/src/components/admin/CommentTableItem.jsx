@@ -1,6 +1,6 @@
 import React from "react";
 import { Trash2 } from "lucide-react";
-import toast from "react-hot-toast";            
+import toast from "react-hot-toast";
 import { UseAppContext } from "../../context/AppContext";
 
 function CommentTableItem({ comment, fetchComments }) {
@@ -8,12 +8,15 @@ function CommentTableItem({ comment, fetchComments }) {
   const { axios } = UseAppContext();
 
   const deleteComment = async () => {
-    if (!window.confirm("Are you sure you want to delete this comment?")) return;
+    if (!window.confirm("Are you sure you want to delete this comment?"))
+      return;
     try {
       const { data } = await axios.post("/api/admin/delete-comment", {
         id: comment._id,
       });
-      data.success ? (toast.success(data.message), fetchComments()) : toast.error(data.message);
+      data.success
+        ? (toast.success(data.message), fetchComments())
+        : toast.error(data.message);
     } catch (error) {
       toast.error(error.message);
     }
@@ -25,16 +28,19 @@ function CommentTableItem({ comment, fetchComments }) {
       const { data } = await axios.post("/api/admin/approve-comment", {
         id: comment._id,
       });
-      data.success ? (toast.success(data.message), fetchComments()) : toast.error(data.message);
+      data.success
+        ? (toast.success(data.message), fetchComments())
+        : toast.error(data.message);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md
-                    transition-all duration-300 flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
-
+    <div
+      className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md
+                    transition-all duration-300 flex flex-col gap-4 md:flex-row md:justify-between md:items-start"
+    >
       {/* ---------- Left Section: Blog, Name & Comment ---------- */}
       <div className="flex-1 space-y-2">
         <h2 className="text-base md:text-lg font-semibold text-gray-900">
@@ -45,16 +51,19 @@ function CommentTableItem({ comment, fetchComments }) {
         </h2>
 
         <div className="text-sm text-gray-700">
-          <p><span className="font-medium text-gray-800">Name:</span> {comment.name}</p>
+          <p>
+            <span className="font-medium text-gray-800">Name:</span>{" "}
+            {comment.name}
+          </p>
           <p className="leading-relaxed mt-1">
-            <span className="font-medium text-gray-800">Comment:</span> {comment.content}
+            <span className="font-medium text-gray-800">Comment:</span>{" "}
+            {comment.content}
           </p>
         </div>
       </div>
 
       {/* ---------- Right Section: Status + Delete + Date ---------- */}
       <div className="flex flex-col items-end text-right gap-3 min-w-[140px]">
-
         <div className="flex items-center gap-2">
           {/* Status / Approve Button */}
           <button
