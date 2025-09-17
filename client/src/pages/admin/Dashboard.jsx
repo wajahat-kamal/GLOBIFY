@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FileText, MessageSquare, FileMinus, X } from "lucide-react";
-import { dashboardBlogsData } from "../../assets/blogsData";
 import BlogTableItem from "../../components/admin/BlogTableItem";
+import { UseAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 function Dashboard() {
   const [dashboardData, setDashboardData] = useState({
@@ -11,8 +12,15 @@ function Dashboard() {
     recentBlogs: [],
   });
 
+  const {axios} = UseAppContext();
+
   const fetchBlogs = async () => {
-    setDashboardData(dashboardBlogsData);
+    try {
+      const {data} = await axios.get("/api/admin/dashboard")
+      data.success ? setDashboardData(data.dashboardData) : toast.error(data.error)
+    } catch (error) {
+      toast.error(error.message)
+    }
   };
 
   useEffect(() => {
@@ -90,7 +98,7 @@ function Dashboard() {
             <tbody>
               {dashboardData.recentBlogs.map((blog, index) => (
                 <BlogTableItem
-                  key={blog.id}
+                  key={blog._id}
                   fetchBlogs={fetchBlogs}
                   index={index + 1}
                   blog={blog}
