@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Moment from "moment";
-import Avatar from "../assets/user-avatar.png"; 
 import Loader from "../components/Loader";
 import { UseAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
@@ -14,7 +13,6 @@ function Blog() {
 
   const [data, setData] = useState(null);
   const [comments, setComments] = useState([]);
-
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
@@ -64,96 +62,82 @@ function Blog() {
   }, [id]);
 
   return data ? (
-    <div className="min-h-screen text-gray-900">
+    <div className="min-h-screen flex flex-col text-gray-900 ">
       <Navbar />
 
-      <article className="max-w-4xl mt-10 mx-auto px-6 py-12">
+      <article className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-8">
         {/* Blog Image */}
-        <div className="mb-8">
+        <div className="mb-10">
           <img
             src={data.image}
             alt={data.title}
-            className="w-full h-72 md:h-96 object-cover rounded-2xl shadow-md"
+            className="w-full h-72 md:h-96 object-cover rounded-2xl shadow-lg"
           />
         </div>
 
         {/* Meta Info */}
-        <div className="mb-6 text-sm text-gray-500 flex items-center gap-3">
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-[11px] md:text-sm font-medium shadow-md">
+        <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-gray-600 mb-6">
+          <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full font-medium shadow-sm">
             {data.category}
           </span>
           <span>•</span>
-          <span className="text-center px-4 py-1.5 bg-sky-100 text-sky-600 text-[11px] md:text-sm font-medium rounded-full shadow-md">
-            Published on {Moment(data.createdAt).format("MMMM Do, YYYY")}
+          <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full font-medium shadow-sm">
+            {Moment(data.createdAt).format("MMMM Do, YYYY")}
           </span>
           <span>•</span>
-          <span className="px-3 py-1 bg-sky-100 text-sky-600 rounded-full text-center text-[11px] md:text-sm shadow-md">
+          <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full font-medium shadow-sm">
             By {data.author}
           </span>
         </div>
 
-        {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4">
+        {/* Title & Description */}
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
           {data.title}
         </h1>
-
-        {/* Description */}
-        <p className="text-lg leading-relaxed text-gray-700">
+        <p className="text-lg leading-relaxed text-gray-700 mb-12">
           {data.description}
         </p>
 
-        {/* Comment Section */}
-        <div>
-          {/* Comments List */}
-          <div className="mt-12 max-w-2xl">
-            <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
-              Comments{" "}
-              <span className="text-gray-500 text-lg">({comments.length})</span>
-            </h2>
+        {/* Comments */}
+        <section className="max-w-2xl">
+          <h2 className="text-2xl font-bold text-gray-900 border-b border-gray-200 pb-3">
+            Comments{" "}
+            <span className="text-gray-500 text-lg">({comments.length})</span>
+          </h2>
 
-            <div className="mt-6 space-y-3">
-              {comments.map((comment, index) => (
-                <div
-                  key={index}
-                  className="p-5 rounded-xl bg-secondary shadow-sm border border-gray-100 hover:shadow-md transition"
-                >
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      {/* <img
-                        src={Avatar}
-                        alt="User avatar"
-                        className="w-8 h-8 rounded-full border border-gray-200 object-cover"
-                      /> */}
-                      <h3 className="text-base font-semibold text-gray-800">
-                        {comment.name}
-                      </h3>
-                    </div>
-
-                    <span className="text-sm px-3 py-1 bg-sky-100 text-sky-600 rounded-full ">
-                      {Moment(comment.createdAt).format("MMMM Do, YYYY")}
-                    </span>
-                  </div>
-
-                  <p className="text-gray-700 leading-relaxed">
-                    {comment.content}
-                  </p>
+          <div className="mt-6 space-y-4">
+            {comments.map((comment, index) => (
+              <div
+                key={index}
+                className="p-5 rounded-xl bg-white shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-base font-semibold text-gray-800">
+                    {comment.name}
+                  </h3>
+                  <span className="text-xs md:text-sm px-3 py-1 bg-sky-100 text-sky-700 rounded-full">
+                    {Moment(comment.createdAt).format("MMMM Do, YYYY")}
+                  </span>
                 </div>
-              ))}
 
-              {/* No Comments */}
-              {comments.length === 0 && (
-                <p className="text-gray-500 text-center text-sm italic">
-                  No comments yet. Be the first to share your thoughts!
+                <p className="text-gray-700 leading-relaxed">
+                  {comment.content}
                 </p>
-              )}
-            </div>
+              </div>
+            ))}
+
+            {comments.length === 0 && (
+              <p className="text-gray-500 text-center text-sm italic">
+                No comments yet. Be the first to share your thoughts!
+              </p>
+            )}
           </div>
 
-          {/* Add Comment */}
-          <div className="mt-12 max-w-2xl bg-secondary p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          {/* Add Comment Form */}
+          <div className="mt-12 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">
               Add Your Comment
-            </h2>
+            </h3>
 
             <form className="space-y-5" onSubmit={addComment}>
               <input
@@ -161,24 +145,24 @@ function Blog() {
                 onChange={(e) => setName(e.target.value)}
                 value={name}
                 placeholder="Enter your name"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-400 focus:border-sky-400 outline-none text-gray-700 placeholder-gray-400 transition"
               />
               <textarea
                 onChange={(e) => setContent(e.target.value)}
                 value={content}
-                placeholder="Add your comment"
+                placeholder="Write your comment..."
                 rows="4"
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary outline-none text-gray-700 placeholder-gray-400 transition resize-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-sky-400 focus:border-sky-400 outline-none text-gray-700 placeholder-gray-400 transition resize-none"
               />
               <button
                 type="submit"
-                className="w-full px-6 py-3 rounded-lg bg-primary text-white font-medium hover:bg-primary/90 transition shadow-sm"
+                className="w-full px-6 py-3 rounded-lg bg-sky-600 text-white font-medium shadow hover:bg-sky-700 transition-colors duration-300"
               >
                 Add Comment
               </button>
             </form>
           </div>
-        </div>
+        </section>
       </article>
 
       <Footer />
