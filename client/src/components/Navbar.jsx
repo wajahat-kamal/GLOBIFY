@@ -4,22 +4,22 @@ import logo from "../assets/globify-logo.png";
 import { UseAppContext } from "../context/AppContext";
 
 export default function Navbar() {
-  const {navigate, token} =  UseAppContext();
+  const { navigate, token } = UseAppContext();
 
   return (
-    <header className="w-full backdrop-blur-md absolute top-0 z-50">
-      <nav className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-22 flex items-center justify-between h-16 md:h-20">
-
+    <header className="absolute top-0 left-0 w-full z-50">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between h-16 md:h-20 px-4 sm:px-8 lg:px-12">
+        {/* Logo & Brand */}
         <div
-          className="flex items-center gap-1 md:gap-2 cursor-pointer"
           onClick={() => navigate("/")}
+          className="flex items-center gap-2 md:gap-3 cursor-pointer group"
         >
           <img
             src={logo}
-            alt="logo"
-            className="h-10 w-10 rounded-md object-cover shadow-sm"
+            alt="Globify logo"
+            className="h-10 w-10 rounded-lg object-cover shadow group-hover:scale-105 transition-transform duration-300"
           />
-          <h1 className="text-[25px] md:text-2xl font-bold text-[#181D45] tracking-wide">
+          <h1 className="text-xl md:text-2xl font-extrabold text-[#181D45] tracking-wide group-hover:text-primary transition-colors duration-300">
             GLOBIFY
           </h1>
         </div>
@@ -27,11 +27,13 @@ export default function Navbar() {
         {/* Right: Auth button */}
         <button
           onClick={() => navigate("/admin")}
-          className="group inline-flex items-center justify-center gap-2 md:px-6 px-4 py-3 rounded-full text-sm font-medium
-           bg-gradient-to-r from-primary to-primary/80 text-white shadow-md hover:shadow-xl
-           hover:scale-103 transition-all duration-300 min-w-[150px]"
+          className="group inline-flex items-center justify-center gap-2 min-w-[140px] px-5 py-2.5 md:px-6 md:py-3
+                     rounded-full text-sm md:text-base font-medium
+                     bg-gradient-to-r from-primary to-primary/90 text-white
+                     shadow-md hover:shadow-xl hover:scale-105
+                     transition-all duration-300"
         >
-          <span>{token ? 'Dashboard' : 'Admin Login'}</span>
+          <span>{token ? "Dashboard" : "Admin Login"}</span>
           <LogIn className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </button>
       </nav>
