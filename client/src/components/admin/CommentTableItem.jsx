@@ -1,12 +1,49 @@
 import React from "react";
 import { Trash2 } from "lucide-react";
+import { UseAppContext } from "../../context/AppContext";
 
 function CommentTableItem({ comment, fetchComments }) {
   const commentDate = new Date(comment.createdAt);
 
+  const { axios } = UseAppContext();
+
+  const deleteComment = async () => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this comment."
+    );
+    if (!confirm) return;
+    try {
+      const { data } = await axios.post("/api/admin/delete-comment", {
+        id: comment._id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        fetchComments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  const approveComment = async () => {
+    try {
+      const { data } = await axios.post("/api/admin/approve-comment", {
+        id: comment._id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        fetchComments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="bg-white border border-gray-200 rounded-xl py-3 px-5 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col gap-4 md:flex-row md:justify-between md:items-start">
-
       {/* Left: Blog Title + Name + Comment */}
       <div className="flex-1 space-y-1">
         {/* Blog Title */}
@@ -19,12 +56,12 @@ function CommentTableItem({ comment, fetchComments }) {
 
         {/* Commenter Name */}
         <h3 className="text-sm font-medium text-gray-800">
-         Name: {comment.name}
+          Name: {comment.name}
         </h3>
 
         {/* Comment Content */}
         <p className="text-sm font-medium text-gray-800 leading-relaxed">
-         Content: {comment.content}
+          Content: {comment.content}
         </p>
       </div>
 
@@ -40,13 +77,13 @@ function CommentTableItem({ comment, fetchComments }) {
                   : "bg-yellow-50 text-yellow-600 border-yellow-200"
               }`}
           >
-            {comment.isApproved ? "Approved" : "Pending"}
+            {comment.isApproved ? "Approved" : "Not approved"}
           </span>
 
           <button
             className="p-1.5 rounded-full border border-red-200 text-red-500 
                        hover:bg-red-100 hover:shadow-sm transition"
-            // onClick={() => handleDelete(comment._id)} // ← add delete handler here
+            // onClick={deleteComment}
           >
             <Trash2 className="w-4 h-4" />
           </button>
