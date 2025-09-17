@@ -27,6 +27,20 @@ function BlogTableItem({ blog, fetchBlogs, index }) {
     }
   };
 
+  const togglePublish = async () => {
+    try {
+      const {data} = await axios.post("/api/blog/toggle-publish", {id: blog._id})
+      if (data.success) {
+        toast.success(data.message);
+        await fetchBlogs();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
   return (
     <tr className="border-b border-gray-400 hover:bg-gray-50 transition-colors">
       {/* Index */}
