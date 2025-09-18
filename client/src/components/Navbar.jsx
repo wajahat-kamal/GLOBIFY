@@ -27,7 +27,7 @@ export default function Navbar() {
         {/* Right: Auth button */}
         <button
           onClick={() => navigate("/admin")}
-          className="group inline-flex items-center justify-center gap-2 min-w-[140px] px-5 py-2.5 md:px-6 md:py-3
+          className="group inline-flex items-center justify-center gap-2 min-w-[140px] px-5 py-2.5 md:px-6
                      rounded-full text-sm md:text-base font-medium
                      bg-gradient-to-r from-primary to-primary/90 text-white
                      shadow-md hover:shadow-xl hover:scale-105
