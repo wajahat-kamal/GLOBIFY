@@ -42,9 +42,11 @@ function Comments() {
           <button
             onClick={() => setFilter("Approved")}
             className={`rounded-full border text-xs py-2 px-5 transition-colors duration-200
-            ${filter === "Approved"
-              ? "border-primary bg-primary/10 text-primary font-medium"
-              : "border-gray-300 text-gray-600 hover:bg-gray-100"}`}
+            ${
+              filter === "Approved"
+                ? "border-primary bg-primary/10 text-primary font-medium"
+                : "border-gray-300 text-gray-600 hover:bg-gray-100"
+            }`}
           >
             Approved
           </button>
@@ -52,9 +54,11 @@ function Comments() {
           <button
             onClick={() => setFilter("Not Approved")}
             className={`rounded-full border text-xs py-2 px-5 transition-colors duration-200
-            ${filter === "Not Approved"
-              ? "border-primary bg-primary/10 text-primary font-medium"
-              : "border-gray-300 text-gray-600 hover:bg-gray-100"}`}
+            ${
+              filter === "Not Approved"
+                ? "border-primary bg-primary/10 text-primary font-medium"
+                : "border-gray-300 text-gray-600 hover:bg-gray-100"
+            }`}
           >
             Not Approved
           </button>
@@ -69,7 +73,6 @@ function Comments() {
               key={comment._id}
               // className="p-5 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition duration-200"
             >
-
               {/* Individual Comment Item */}
               <CommentTableItem
                 comment={comment}
