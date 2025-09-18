@@ -29,7 +29,7 @@ function Comments() {
   );
 
   return (
-    <div className="p-6 bg-secondary min-h-screen md:m-5 m-0 rounded-xl shadow-sm">
+    <div className="p-6 bg-adminBG min-h-screen md:m-5 m-0 rounded-xl shadow-sm">
       {/* Header Section */}
       <div className="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div className="flex items-center gap-3">

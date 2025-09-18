@@ -28,7 +28,7 @@ function ListBlog() {
   }, []);
 
   return (
-    <div className="p-6 bg-secondary md:m-5 m-0 rounded-xl">
+    <div className="p-6 bg-adminBG md:m-5 m-0 rounded-xl">
       {/* Header Section */}
       <div className="mb-6">
         <div className="flex items-center gap-2">
