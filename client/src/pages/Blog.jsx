@@ -84,10 +84,6 @@ function Blog() {
           <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full font-medium shadow-sm">
             {Moment(data.createdAt).format("MMMM Do, YYYY")}
           </span>
-          <span>•</span>
-          <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full font-medium shadow-sm">
-            By {data.author}
-          </span>
         </div>
 
         {/* Title & Description */}
