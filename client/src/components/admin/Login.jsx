@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Mail,
-  Lock,
-  Eye,
-  EyeOff,
-  ArrowLeft,
-} from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
 
@@ -37,8 +31,10 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}>
+    <div
+      className="min-h-screen flex items-center justify-center px-4 bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}
+    >
       <div
         className="
           w-full max-w-md p-8
