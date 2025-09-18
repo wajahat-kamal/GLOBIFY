@@ -68,7 +68,7 @@ function AddBlogs() {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="bg-secondary p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6"
+      className="bg-adminBG p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6"
     >
       <div>
         <p className="text-sm font-medium text-gray-600 mb-2">
