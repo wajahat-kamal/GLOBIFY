@@ -11,9 +11,6 @@
 
 @theme  {
   --color-primary: #5044E5;
-  --color-secondary: #FDFEFF;
+  --color-secondary: #EEF2FE;
 }
 
-body {
-  background-color: #EEF2FE;
-}

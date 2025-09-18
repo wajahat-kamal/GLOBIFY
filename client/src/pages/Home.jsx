@@ -7,13 +7,16 @@ import Footer from "../components/Footer";
 
 function Home() {
   return (
-    <>
+    <div
+      className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}
+    >
       <Navbar />
       <Header />
       <BlogList />
-      <NewsLater/>
-      <Footer/>
-    </>
+      <NewsLater />
+      <Footer />
+    </div>
   );
 }
 
