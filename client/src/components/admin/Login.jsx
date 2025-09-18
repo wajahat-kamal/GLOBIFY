@@ -37,12 +37,13 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 px-4">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}>
       <div
         className="
           w-full max-w-md p-8
           rounded-2xl border border-white/20
-          bg-white/60 backdrop-blur-lg
+          bg-secondary backdrop-blur-lg
           shadow-2xl
         "
       >
