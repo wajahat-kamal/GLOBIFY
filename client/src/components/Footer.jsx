@@ -78,16 +78,28 @@ function Footer() {
 
         {/* Social Icons */}
         <div className="flex space-x-5 mt-4 md:mt-0">
-          <a href="#" className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors">
+          <a
+            href="#"
+            className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors"
+          >
             <Facebook size={20} />
           </a>
-          <a href="#" className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors">
+          <a
+            href="#"
+            className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors"
+          >
             <Twitter size={20} />
           </a>
-          <a href="#" className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors">
+          <a
+            href="#"
+            className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors"
+          >
             <Instagram size={20} />
           </a>
-          <a href="#" className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors">
+          <a
+            href="#"
+            className="p-2 rounded-full hover:bg-white/60 hover:text-primary transition-colors"
+          >
             <Linkedin size={20} />
           </a>
         </div>
