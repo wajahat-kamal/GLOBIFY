@@ -94,8 +94,7 @@ function Blog() {
         <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 leading-tight">
           {data.title}
         </h1>
-        <p className="text-lg leading-relaxed text-gray-700 mb-12">
-          {data.description}
+        <p className="text-lg leading-relaxed text-gray-700 mb-12" dangerouslySetInnerHTML={ {__html: data.description}}>
         </p>
 
         {/* Comments */}
