@@ -12,14 +12,16 @@ function Dashboard() {
     recentBlogs: [],
   });
 
-  const {axios} = UseAppContext();
+  const { axios } = UseAppContext();
 
   const fetchBlogs = async () => {
     try {
-      const {data} = await axios.get("/api/admin/dashboard")
-      data.success ? setDashboardData(data.dashboardData) : toast.error(data.error)
+      const { data } = await axios.get("/api/admin/dashboard");
+      data.success
+        ? setDashboardData(data.dashboardData)
+        : toast.error(data.error);
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
 
