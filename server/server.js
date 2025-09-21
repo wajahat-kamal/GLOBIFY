@@ -11,7 +11,7 @@ const app = express();
 // Middlewares
 app.use(
   cors({
-    origin: "http://localhost:5173", // Vite or CRA
+    origin: ["http://localhost:5173", "https://globify-wk.vercel.app/" ], // Vite or CRA
     credentials: true,
   })
 );
