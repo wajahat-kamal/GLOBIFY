@@ -1,16 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, Loader2 } from "lucide-react";
 import uploadImage from "../../assets/uploadImage.svg";
 import Quill from "quill";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
-import {parse} from 'marked'
 
 function AddBlogs() {
   const { axios } = UseAppContext();
-  const [isAdding, setIsAdding] = useState(false);
-  const [loading, setLoading] = useState(false);
 
+  const [isAdding, setIsAdding] = useState(false);
+  const [loading, setLoading] = useState(false); // AI generation loading
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("Startup");
@@ -31,19 +30,27 @@ function AddBlogs() {
   };
 
   const generateContent = async () => {
-    if(!title) return toast.error("Please enter a title!")
+    if (!title) return toast.error("Please enter a title!");
 
-     try {
-      setLoading(true)
-      const {data} = await axios.post("/api/blog/generate", {prompt: title})
+    try {
+      setLoading(true);
+      const { data } = await axios.post("/api/blog/generate", { prompt: title });
+
       if (data.success) {
-        quillRef.current.root.innerHTML = parse(data.content)
-      }else {
-        toast.error(data.error)
+        const quill = quillRef.current;
+        // Gemini returns plain text: convert line breaks to <br>
+        const html = data.content.replace(/\n/g, "<br>");
+        quill.clipboard.dangerouslyPasteHTML(html);
+        toast.success("Content generated!");
+      } else {
+        toast.error(data.error || "Failed to generate content");
       }
-     } catch (error) {
-      toast.error(error.error)
-     }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Error generating content");
+      console.error("Generate content error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const onSubmitHandler = async (e) => {
@@ -64,6 +71,7 @@ function AddBlogs() {
 
       if (data.success) {
         toast.success(data.message);
+        // Reset form
         setImage(null);
         setTitle("");
         setCategory("Startup");
@@ -74,6 +82,7 @@ function AddBlogs() {
       }
     } catch (error) {
       toast.error(error.response?.data?.message || error.message);
+      console.error("Add blog error:", error);
     } finally {
       setIsAdding(false);
     }
@@ -82,12 +91,11 @@ function AddBlogs() {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="bg-adminBG p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6"
+      className="bg-adminBG p-6 m-0 md:m-5 rounded-xl shadow-sm space-y-6 relative"
     >
+      {/* ===== Thumbnail Upload ===== */}
       <div>
-        <p className="text-sm font-medium text-gray-600 mb-2">
-          Upload Thumbnail
-        </p>
+        <p className="text-sm font-medium text-gray-600 mb-2">Upload Thumbnail</p>
         <label
           htmlFor="image"
           className="block w-40 border border-dashed border-gray-300 rounded-lg p-2 cursor-pointer hover:border-primary hover:bg-primary/5 transition"
@@ -111,6 +119,7 @@ function AddBlogs() {
         </label>
       </div>
 
+      {/* ===== Blog Title ===== */}
       <div>
         <label
           htmlFor="title"
@@ -129,6 +138,7 @@ function AddBlogs() {
         />
       </div>
 
+      {/* ===== Blog Description (Quill Editor) ===== */}
       <div className="relative w-full max-w-lg">
         <label
           htmlFor="description"
@@ -140,16 +150,25 @@ function AddBlogs() {
         <div className="relative h-60 rounded-lg border border-gray-300 bg-white shadow-sm overflow-y-auto overflow-x-hidden focus-within:ring-2 focus-within:ring-primary">
           <div ref={editorRef} className="h-full"></div>
 
+          {/* Loading overlay during AI generation */}
+          {loading && (
+            <div className="absolute inset-0 bg-white/60 flex items-center justify-center rounded-lg z-10">
+              <Loader2 className="animate-spin text-primary w-8 h-8" />
+            </div>
+          )}
+
           <button
             type="button"
             onClick={generateContent}
-            className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow hover:bg-primary/90 transition"
+            disabled={loading}
+            className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-primary text-white text-xs font-medium px-3 py-1.5 rounded-lg shadow hover:bg-primary/90 transition disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            ⚡ Generate with AI
+            ⚡ {loading ? "Generating..." : "Generate with AI"}
           </button>
         </div>
       </div>
 
+      {/* ===== Category Selector ===== */}
       <div>
         <label
           htmlFor="category"
@@ -188,6 +207,7 @@ function AddBlogs() {
         </div>
       </div>
 
+      {/* ===== Publish Toggle ===== */}
       <div className="flex items-center gap-3 mt-4">
         <p className="text-sm font-medium text-gray-600">Publish Now</p>
         <label className="relative inline-flex items-center cursor-pointer">
@@ -202,6 +222,7 @@ function AddBlogs() {
         </label>
       </div>
 
+      {/* ===== Submit Button ===== */}
       <button
         type="submit"
         disabled={isAdding}
