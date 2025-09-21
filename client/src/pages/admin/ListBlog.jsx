@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { dashboardBlogsData } from "../../assets/blogsData";
 import BlogTableItem from "../../components/admin/BlogTableItem";
 import { FileText } from "lucide-react";
 import { UseAppContext } from "../../context/AppContext";
