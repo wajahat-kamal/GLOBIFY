@@ -4,10 +4,12 @@ import uploadImage from "../../assets/uploadImage.svg";
 import Quill from "quill";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
+import {parse} from 'marked'
 
 function AddBlogs() {
   const { axios } = UseAppContext();
   const [isAdding, setIsAdding] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [image, setImage] = useState(null);
   const [title, setTitle] = useState("");
@@ -28,8 +30,20 @@ function AddBlogs() {
     if (file) setImage(file);
   };
 
-  const generateContent = () => {
-    // optional: AI content generator
+  const generateContent = async () => {
+    if(!title) return toast.error("Please enter a title!")
+
+     try {
+      setLoading(true)
+      const {data} = await axios.post("/api/blog/generate", {prompt: title})
+      if (data.success) {
+        quillRef.current.root.innerHTML = parse(data.content)
+      }else {
+        toast.error(data.error)
+      }
+     } catch (error) {
+      toast.error(error.error)
+     }
   };
 
   const onSubmitHandler = async (e) => {
