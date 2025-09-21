@@ -202,13 +202,21 @@ export const getBlogComment = async (req, res) => {
 
 export const generateContent = async (req, res) => {
   try {
-    const {prompt} = req.body;
-    const content = await main(prompt + " Generate a blog content for this blog topic in simple text format")
+    const { prompt } = req.body;
+    const content = await main(
+      `${prompt} — Generate a blog content for this blog topic in simple text format`
+    );
     res.json({
       success: true,
-      content
-    })
+      content,
+    });
   } catch (error) {
-    
+    console.error("Error generating content:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to generate content",
+      error: error.message, // optional: remove in production if you don't want to expose details
+    });
   }
-}
+};
