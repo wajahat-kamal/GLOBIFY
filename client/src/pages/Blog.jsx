@@ -73,7 +73,8 @@ function Blog() {
   /** ---------- JSX ---------- */
   return (
     <div
-      className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900 mainBG"
+      className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900"
+      style={{ backgroundImage: `url(${mainBG})` }}
     >
       <Navbar />
 
