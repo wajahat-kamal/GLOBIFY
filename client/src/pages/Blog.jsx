@@ -73,7 +73,7 @@ function Blog() {
   return (
     <div
       className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900"
-      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}
+      style={{ backgroundImage: "url('('../assets/main-bg.jpg')" }}
     >
       <Navbar />
 

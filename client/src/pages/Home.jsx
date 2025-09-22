@@ -9,7 +9,7 @@ function Home() {
   return (
     <div
       className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/public/main-bg.jpg')" }}
+      style={{ backgroundImage: "url('../assets/main-bg.jpg')" }}
     >
       <Navbar />
       <Header />
