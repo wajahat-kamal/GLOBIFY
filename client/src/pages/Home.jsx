@@ -9,7 +9,7 @@ import mainBG from "../assets/main-bg.jpg";
 function Home() {
   return (
     <div
-      className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
+      className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat bg-fixed"
       style={{ backgroundImage: `url(${mainBG})` }}
     >
       <Navbar />
