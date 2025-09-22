@@ -9,19 +9,27 @@ import blogRouter from "./routes/blogRoute.js";
 const app = express();
 
 // Middlewares
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://globify-wk.vercel.app" ],
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "https://globify-wk.vercel.app",
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+
+app.options("*", cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.json());
 
-
 // routes
-app.use("/api/admin/", adminRouter)
-app.use("/api/blog/", blogRouter)
+app.use("/api/admin/", adminRouter);
+app.use("/api/blog/", blogRouter);
 
 app.get("/", (req, res) => {
   res.send("APIs is Working 🚀");
