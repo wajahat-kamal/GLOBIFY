@@ -8,8 +8,7 @@ import Footer from "../components/Footer";
 function Home() {
   return (
     <div
-      className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('../assets/main-bg.jpg')" }}
+      className="min-h-screen bg-[#EEF2FE] bg-cover bg-center bg-no-repeat mainBG"
     >
       <Navbar />
       <Header />

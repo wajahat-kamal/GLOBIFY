@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Moment from "moment";
 import toast from "react-hot-toast";
+import mainBG from '../assets/main-bg.jpg'
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -72,8 +73,7 @@ function Blog() {
   /** ---------- JSX ---------- */
   return (
     <div
-      className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900"
-      style={{ backgroundImage: "url('('../assets/main-bg.jpg')" }}
+      className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900 mainBG"
     >
       <Navbar />
 
