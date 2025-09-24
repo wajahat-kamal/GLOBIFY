@@ -26,18 +26,23 @@ function BlogList() {
   return (
     <section className="w-full px-4 md:px-10 pt-8">
       {/* Category Buttons */}
-      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2 mb-6">
+      <div className="flex flex-wrap items-center justify-center md:gap-6 gap-2 max-sm:gap-1.5 mb-6">
         {blogCategory.map((item) => (
           <button
             key={item}
             onClick={() => setMenu(item)}
-            className={`relative px-4 py-1.5 text-sm md:text-[15px] font-medium rounded-4xl overflow-hidden
-                       bg-gray-100 text-gray-600 shadow-sm transition-all duration-300
-                       ${
-                         menu === item
-                           ? "bg-indigo-600 text-white shadow"
-                           : "hover:bg-gray-200"
-                       }`}
+            className={`relative
+                  px-4 py-1.5 md:px-4 md:py-1.5
+                  max-sm:px-2.5 max-sm:py-1      
+                  text-sm md:text-[15px] max-sm:text-xs  
+                  font-medium rounded-4xl overflow-hidden
+                  bg-gray-100 text-gray-600 shadow-sm
+                  transition-all duration-300
+                  ${
+                    menu === item
+                      ? "bg-indigo-600 text-white shadow"
+                      : "hover:bg-gray-200"
+                  }`}
           >
             {item}
           </button>
