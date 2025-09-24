@@ -34,7 +34,9 @@ function AddBlogs() {
 
     try {
       setLoading(true);
-      const { data } = await axios.post("/api/blog/generate", { prompt: title });
+      const { data } = await axios.post("/api/blog/generate", {
+        prompt: title,
+      });
 
       if (data.success) {
         const quill = quillRef.current;
@@ -95,7 +97,9 @@ function AddBlogs() {
     >
       {/* ===== Thumbnail Upload ===== */}
       <div>
-        <p className="text-sm font-medium text-gray-600 mb-2">Upload Thumbnail</p>
+        <p className="text-sm font-medium text-gray-600 mb-2">
+          Upload Thumbnail
+        </p>
         <label
           htmlFor="image"
           className="block w-40 border border-dashed border-gray-300 rounded-lg p-2 cursor-pointer hover:border-primary hover:bg-primary/5 transition"
@@ -236,6 +240,9 @@ function AddBlogs() {
         <PlusCircle className="w-5 h-5" />
         {isAdding ? "Adding..." : "Add Blog"}
       </button>
+      <p className="mt-4 w-full max-w-lg text-center text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2 text-xs sm:text-base font-medium shadow-sm">
+        Please fill in all required fields before adding a blog.
+      </p>
     </form>
   );
 }
