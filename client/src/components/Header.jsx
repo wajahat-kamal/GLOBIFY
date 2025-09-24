@@ -29,8 +29,7 @@ function Header() {
 
         {/* Heading */}
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold sm:leading-[1.2] text-gray-800">
-          Your own <span className="text-primary">blogging</span>{" "}
-          <br />
+          Your own <span className="text-primary">blogging</span> <br />
           platform.
         </h1>
 
@@ -44,18 +43,36 @@ function Header() {
         {/* Search form */}
         <form
           onSubmit={submitHandler}
-          className="flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded-lg overflow-hidden"
+          className="
+    flex justify-between items-center
+    max-w-lg mx-auto
+    border border-gray-300 bg-white
+    rounded-lg overflow-hidden
+    px-2
+    max-sm:px-1         
+  "
         >
           <input
             placeholder="Search for blogs"
             required
             ref={inputRef}
-            className="w-full pl-4 outline-none"
+            className="
+      w-full pl-4 max-sm:pl-2   
+      text-base max-sm:text-sm  
+      outline-none
+    "
             type="text"
           />
           <button
             type="submit"
-            className="bg-primary text-white px-8 py-2 m-1 rounded-lg hover:scale-105 transition-all cursor-pointer"
+            className="
+      bg-primary text-white
+      px-8 py-2 max-sm:px-4 max-sm:py-1.5 
+      text-base max-sm:text-sm           
+      m-1 rounded-lg
+      hover:scale-105 transition-all
+      cursor-pointer
+    "
           >
             Search
           </button>
