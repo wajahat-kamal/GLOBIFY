@@ -1,5 +1,5 @@
-import { Sparkles } from "lucide-react";
 import React, { useRef } from "react";
+import { Sparkles } from "lucide-react";
 import { UseAppContext } from "../context/AppContext";
 
 function Header() {
@@ -44,35 +44,35 @@ function Header() {
         <form
           onSubmit={submitHandler}
           className="
-    flex justify-between items-center
-    max-w-lg mx-auto
-    border border-gray-300 bg-white
-    rounded-lg overflow-hidden
-    px-2
-    max-sm:px-1         
-  "
+            flex justify-between items-center
+            max-w-lg mx-auto
+            border border-gray-300 bg-white
+            rounded-lg overflow-hidden
+            px-2
+            max-sm:px-1
+          "
         >
           <input
+            type="text"
             placeholder="Search for blogs"
             required
             ref={inputRef}
             className="
-      w-full pl-4 max-sm:pl-2   
-      text-base max-sm:text-sm  
-      outline-none
-    "
-            type="text"
+              w-full pl-4 max-sm:pl-2
+              text-base max-sm:text-sm
+              outline-none
+            "
           />
           <button
             type="submit"
             className="
-      bg-primary text-white
-      px-8 py-2 max-sm:px-4 max-sm:py-1.5 
-      text-base max-sm:text-sm           
-      m-1 rounded-lg
-      hover:scale-105 transition-all
-      cursor-pointer
-    "
+              bg-primary text-white
+              px-8 py-2 max-sm:px-4 max-sm:py-1.5
+              text-base max-sm:text-sm
+              m-1 rounded-lg
+              hover:scale-105 transition-all
+              cursor-pointer
+            "
           >
             Search
           </button>
@@ -82,7 +82,12 @@ function Header() {
           <div className="mt-2">
             <button
               onClick={onClear}
-              className="bg-primary text-white text-sm px-6 py-2 m-1 rounded-lg hover:scale-105 transition-all cursor-pointer"
+              className="
+                bg-primary text-white text-sm
+                px-6 py-2 m-1 rounded-lg
+                hover:scale-105 transition-all
+                cursor-pointer
+              "
             >
               Clear Search
             </button>
