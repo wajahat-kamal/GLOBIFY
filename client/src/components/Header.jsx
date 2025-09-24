@@ -28,9 +28,9 @@ function Header() {
         </div>
 
         {/* Heading */}
-        <h1 className="text-4xl sm:text-6xl font-bold sm:leading-[1.2] text-gray-800">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold sm:leading-[1.2] text-gray-800">
           Your own <span className="text-primary">blogging</span>{" "}
-          <br className="hidden sm:block" />
+          <br />
           platform.
         </h1>
 
