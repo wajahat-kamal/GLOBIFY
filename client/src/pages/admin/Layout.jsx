@@ -15,20 +15,20 @@ function Layout() {
   };
 
   return (
-    <div className="h-[100dvh] overflow-hidden flex flex-col ">
+    <div className="h-[100dvh] overflow-hidden flex flex-col">
       {/* Top Navbar */}
-      <nav className="bg-adminBG border-b border-gray-200 shadow-sm flex items-center justify-between h-16 md:h-20 px-4 md:px-8">
+      <nav className="bg-adminBG border-b border-gray-200 shadow-sm flex items-center justify-between h-14 md:h-16 px-4 md:px-6">
         {/* Left: Logo + Brand */}
         <div
-          className="flex items-center gap-3 cursor-pointer"
+          className="flex items-center gap-2 cursor-pointer"
           onClick={() => navigate("/")}
         >
           <img
             src={logo}
             alt="logo"
-            className="h-10 w-10 md:h-12 md:w-12 rounded-lg object-cover shadow-md"
+            className="h-8 w-8 md:h-10 md:w-10 rounded-lg object-cover shadow-md"
           />
-          <h1 className="text-xl md:text-2xl font-extrabold text-[#181D45] tracking-wide hover:text-primary transition-colors duration-300">
+          <h1 className="text-lg md:text-xl font-extrabold text-[#181D45] tracking-wide hover:text-primary transition-colors duration-300">
             GLOBIFY
           </h1>
         </div>
@@ -36,7 +36,7 @@ function Layout() {
         {/* Right: Auth button */}
         <button
           onClick={logout}
-          className="inline-flex items-center justify-center gap-2 px-4 md:px-8 py-2 rounded-full text-md font-medium
+          className="inline-flex items-center justify-center gap-2 px-3 md:px-5 py-1.5 rounded-full text-sm font-medium
                    bg-primary text-white shadow-md hover:bg-primary/90 hover:shadow-lg
                    transition-all duration-300"
         >
@@ -50,7 +50,7 @@ function Layout() {
         <Sidebar />
 
         {/* Main Page Content */}
-        <main className="flex-1 h-[90dvh] p-4 md:p-6 overflow-y-auto">
+        <main className="flex-1 h-[90dvh] p-3 md:p-4 overflow-y-auto">
           <Outlet />
         </main>
       </div>
