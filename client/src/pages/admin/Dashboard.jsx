@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FileText, MessageSquare, FileMinus, X } from "lucide-react";
+import { FileText, MessageSquare, FileMinus } from "lucide-react";
 import BlogTableItem from "../../components/admin/BlogTableItem";
 import { UseAppContext } from "../../context/AppContext";
 import toast from "react-hot-toast";
@@ -30,67 +30,67 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="px-4 py-0 w-full">
+    <div className="px-3 py-2 w-full">
       {/* Stats Cards */}
-      <div className="flex flex-col md:flex-row flex-wrap items-start justify-start gap-6">
+      <div className="flex flex-col md:flex-row flex-wrap items-start justify-start gap-4">
         {/* Blogs Card */}
-        <div className="bg-adminBG min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-blue-100 text-blue-500 flex items-center justify-center">
-            <FileText className="h-8 w-8" />
+        <div className="bg-adminBG min-w-44 rounded-xl shadow p-4 flex items-center gap-3">
+          <div className="p-2.5 rounded-lg bg-blue-100 text-blue-500 flex items-center justify-center">
+            <FileText className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-lg font-bold text-gray-900">
               {dashboardData.blogs}
             </h1>
-            <p className="text-gray-500 text-sm">Blogs</p>
+            <p className="text-gray-500 text-xs">Blogs</p>
           </div>
         </div>
 
         {/* Comments Card */}
-        <div className="bg-adminBG min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-green-100 text-green-500 flex items-center justify-center">
-            <MessageSquare className="h-8 w-8" />
+        <div className="bg-adminBG min-w-44 rounded-xl shadow p-4 flex items-center gap-3">
+          <div className="p-2.5 rounded-lg bg-green-100 text-green-500 flex items-center justify-center">
+            <MessageSquare className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-lg font-bold text-gray-900">
               {dashboardData.comments}
             </h1>
-            <p className="text-gray-500 text-sm">Comments</p>
+            <p className="text-gray-500 text-xs">Comments</p>
           </div>
         </div>
 
         {/* Drafts Card */}
-        <div className="bg-adminBG min-w-55 rounded-2xl shadow-md hover:shadow-lg transition-all p-6 flex items-center gap-4">
-          <div className="p-3 rounded-xl bg-orange-100 text-orange-500 flex items-center justify-center">
-            <FileMinus className="h-8 w-8" />
+        <div className="bg-adminBG min-w-44 rounded-xl shadow p-4 flex items-center gap-3">
+          <div className="p-2.5 rounded-lg bg-orange-100 text-orange-500 flex items-center justify-center">
+            <FileMinus className="h-6 w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-lg font-bold text-gray-900">
               {dashboardData.drafts}
             </h1>
-            <p className="text-gray-500 text-sm">Drafts</p>
+            <p className="text-gray-500 text-xs">Drafts</p>
           </div>
         </div>
       </div>
 
-      <div className="bg-adminBG rounded-2xl shadow-md p-6 mt-6">
+      <div className="bg-adminBG rounded-xl shadow p-4 mt-5">
         {/* Heading */}
-        <h1 className="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
-          <FileText className="h-5 w-5 text-primary" />
+        <h1 className="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <FileText className="h-4 w-4 text-primary" />
           Latest Blogs
         </h1>
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[250px]">
+          <table className="w-full text-left border-collapse min-w-[200px]">
             {/* Table Head */}
             <thead className="hidden md:table-header-group">
               <tr className="bg-gray-50 border-b border-gray-200 text-gray-700">
-                <th className="py-3 px-4 text-sm font-semibold">#</th>
-                <th className="py-3 px-4 text-sm font-semibold">Blog Title</th>
-                <th className="py-3 px-4 text-sm font-semibold">Date</th>
-                <th className="py-3 px-4 text-sm font-semibold">Status</th>
-                <th className="py-3 px-4 text-sm font-semibold text-center">
+                <th className="py-2 px-3 text-xs font-semibold">#</th>
+                <th className="py-2 px-3 text-xs font-semibold">Blog Title</th>
+                <th className="py-2 px-3 text-xs font-semibold">Date</th>
+                <th className="py-2 px-3 text-xs font-semibold">Status</th>
+                <th className="py-2 px-3 text-xs font-semibold text-center">
                   Action
                 </th>
               </tr>
