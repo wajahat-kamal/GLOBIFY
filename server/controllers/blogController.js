@@ -216,7 +216,7 @@ export const generateContent = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to generate content",
-      error: error.message, // optional: remove in production if you don't want to expose details
+      error: error.message,
     });
   }
 };

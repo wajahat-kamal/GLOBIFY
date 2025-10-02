@@ -18,7 +18,6 @@ function Blog() {
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
 
-  /** ---------- Data Fetchers ---------- */
   const fetchBlog = async () => {
     try {
       const { data } = await axios.get(`/api/blog/${id}`);
@@ -39,7 +38,6 @@ function Blog() {
     }
   };
 
-  /** ---------- Handlers ---------- */
   const addComment = async (e) => {
     e.preventDefault();
     try {
@@ -62,7 +60,6 @@ function Blog() {
     }
   };
 
-  /** ---------- Initial Load ---------- */
   useEffect(() => {
     fetchBlog();
     fetchComments();
@@ -70,7 +67,6 @@ function Blog() {
 
   if (!blog) return <Loader />;
 
-  /** ---------- JSX ---------- */
   return (
     <div
       className="min-h-screen flex flex-col bg-[#EEF2FE] bg-cover bg-center bg-no-repeat text-gray-900"
