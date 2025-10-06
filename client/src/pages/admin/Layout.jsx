@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/globify-logo.png";
+import logo from "../../assets/globify-logo.svg";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/admin/Sidebar";
 import { UseAppContext } from "../../context/AppContext";

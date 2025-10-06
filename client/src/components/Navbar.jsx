@@ -1,6 +1,6 @@
 import React from "react";
 import { LogIn } from "lucide-react";
-import logo from "../assets/globify-logo.png";
+import logo from "../assets/globify-logo.svg";
 import { UseAppContext } from "../context/AppContext";
 
 export default function Navbar() {
