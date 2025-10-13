@@ -67,7 +67,7 @@ function Footer() {
         <p className="mt-4 md:mt-0 text-gray-600">
           Made with <span className="text-red-500">❤</span> by{" "}
           <a
-            href="https://wajahatkamal-dev.vercel.app/"
+            href="https://wajahat-kamal.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-gray-400 hover:text-primary transition"
